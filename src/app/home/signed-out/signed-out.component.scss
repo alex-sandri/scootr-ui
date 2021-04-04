@@ -1,0 +1,44 @@
+:host
+{
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main";
+    grid-template-rows: max-content auto;
+    height: 100%;
+}
+
+main
+{
+    display: flex;
+    align-items: center;
+}
+
+.hero
+{
+    max-width: 65ch;
+
+    h1
+    {
+        margin: 0;
+        font-size: 5em;
+    }
+
+    p
+    {
+        margin: 0;
+        margin-bottom: 2rem;
+        font-size: 1.5em;
+    }
+
+    img
+    {
+        position: absolute;
+        z-index: -1;
+        opacity: 0.5;
+        right: 0;
+        bottom: 0;
+        transform: rotateY(180deg);
+        padding-right: 1rem;
+    }
+}
