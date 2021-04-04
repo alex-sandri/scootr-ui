@@ -9,10 +9,16 @@
 
 header
 {
-    a
+    display: grid;
+    grid-template-columns: auto max-content;
+    align-items: center;
+    gap: 1em;
+
+    a:first-child
     {
         text-decoration: none;
         color: var(--secondary-color);
         font-size: 2em;
+        width: max-content;
     }
 }
