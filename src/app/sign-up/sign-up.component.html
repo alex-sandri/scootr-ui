@@ -20,7 +20,7 @@
                     autocomplete="given-name"
                     required
                 >
-                <div *ngIf="form.get('first_name')?.errors" class="errors">
+                <div class="errors">
                     <p *ngFor="let error of form.get('first_name')?.errors?.errors">
                         {{ error.error }}
                     </p>
@@ -36,7 +36,7 @@
                     autocomplete="family-name"
                     required
                 >
-                <div *ngIf="form.get('last_name')?.errors" class="errors">
+                <div class="errors">
                     <p *ngFor="let error of form.get('last_name')?.errors?.errors">
                         {{ error.error }}
                     </p>
@@ -53,7 +53,7 @@
                 autocomplete="email"
                 required
             >
-            <div *ngIf="form.get('email')?.errors" class="errors">
+            <div class="errors">
                 <p *ngFor="let error of form.get('email')?.errors?.errors">
                     {{ error.error }}
                 </p>
