@@ -1,6 +1,7 @@
 :host
 {
     display: block;
+    grid-area: header;
     padding: 1em;
     background-color: var(--primary-color);
     border-radius: 0.5rem;
