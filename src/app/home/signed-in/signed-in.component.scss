@@ -1,0 +1,9 @@
+:host
+{
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main";
+    grid-template-rows: max-content auto;
+    height: 100%;
+}
