@@ -14,7 +14,7 @@
                 Nome
                 <input
                     formControlName="first_name"
-    
+
                     type="text"
                     name="first_name"
                     autocomplete="given-name"
@@ -30,7 +30,7 @@
                 Cognome
                 <input
                     formControlName="last_name"
-    
+
                     type="text"
                     name="last_name"
                     autocomplete="family-name"
@@ -55,6 +55,37 @@
             >
             <div class="errors">
                 <p *ngFor="let error of form.get('email')?.errors?.errors">
+                    {{ error.error }}
+                </p>
+            </div>
+        </label>
+        <label>
+            Data di Nascita
+            <input
+                formControlName="birth_date"
+
+                type="date"
+                name="birth_date"
+                autocomplete="bday"
+                required
+            >
+            <div class="errors">
+                <p *ngFor="let error of form.get('birth_date')?.errors?.errors">
+                    {{ error.error }}
+                </p>
+            </div>
+        </label>
+        <label>
+            Codice Fiscale
+            <input
+                formControlName="fiscal_number"
+
+                type="text"
+                name="fiscal_number"
+                required
+            >
+            <div class="errors">
+                <p *ngFor="let error of form.get('fiscal_number')?.errors?.errors">
                     {{ error.error }}
                 </p>
             </div>
