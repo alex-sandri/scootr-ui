@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthService } from './services/auth/auth.service';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +16,12 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HomeComponent,
     HeaderComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

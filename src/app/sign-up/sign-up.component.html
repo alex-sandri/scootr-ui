@@ -1,1 +1,66 @@
-<p>sign-up works!</p>
+<app-header></app-header>
+
+<main>
+    <form [formGroup]="form" (submit)="onSubmit($event)">
+        <div class="title">
+            <h1>Registrati</h1>
+            <p>
+                Hai già un account?
+                <a routerLink="/signin">Accedi</a>
+            </p>
+        </div>
+        <div class="row">
+            <label>
+                Nome
+                <input
+                    formControlName="first_name"
+    
+                    type="text"
+                    name="first_name"
+                    autocomplete="given-name"
+                    required
+                >
+                <div *ngIf="form.get('first_name')?.errors" class="errors">
+                    <p *ngFor="let error of form.get('first_name')?.errors?.errors">
+                        {{ error.error }}
+                    </p>
+                </div>
+            </label>
+            <label>
+                Cognome
+                <input
+                    formControlName="last_name"
+    
+                    type="text"
+                    name="last_name"
+                    autocomplete="family-name"
+                    required
+                >
+                <div *ngIf="form.get('last_name')?.errors" class="errors">
+                    <p *ngFor="let error of form.get('last_name')?.errors?.errors">
+                        {{ error.error }}
+                    </p>
+                </div>
+            </label>
+        </div>
+        <label>
+            Email
+            <input
+                formControlName="email"
+
+                type="email"
+                name="email"
+                autocomplete="email"
+                required
+            >
+            <div *ngIf="form.get('email')?.errors" class="errors">
+                <p *ngFor="let error of form.get('email')?.errors?.errors">
+                    {{ error.error }}
+                </p>
+            </div>
+        </label>
+        <button type="submit">
+            Registrati
+        </button>
+    </form>
+</main>
