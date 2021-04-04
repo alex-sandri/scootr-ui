@@ -6,6 +6,8 @@
 {
     --primary-color: #{$primary-color};
     --secondary-color: #{$secondary-color};
+    --link-color: #{$link-color};
+    --danger-color: #{$danger-color};
 }
 
 *
@@ -57,11 +59,11 @@ a,
 
     &:focus
     {
-        box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
 
         &.dark
         {
-            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
         }
     }
 
