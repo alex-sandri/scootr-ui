@@ -1,0 +1,17 @@
+:host
+{
+    display: block;
+    padding: 1em;
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+}
+
+header
+{
+    a
+    {
+        text-decoration: none;
+        color: var(--secondary-color);
+        font-size: 2em;
+    }
+}
