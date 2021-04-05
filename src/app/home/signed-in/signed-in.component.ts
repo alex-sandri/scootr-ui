@@ -10,6 +10,7 @@ import { ApiService, IVehicle } from 'src/app/services/api/api.service';
 export class SignedInHomeComponent implements AfterViewInit
 {
   private map?: L.Map;
+  private markerGroup?: L.LayerGroup;
 
   public canUseGeolocation = true;
   public hasGrantedGeolocationPermissions = false;
@@ -70,6 +71,10 @@ export class SignedInHomeComponent implements AfterViewInit
       .on("dragend", () => this.loadVehicles())
       .on("zoomend", () => this.loadVehicles());
 
+    this.markerGroup = L
+      .layerGroup()
+      .addTo(this.map);
+
     L
       .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
@@ -81,7 +86,7 @@ export class SignedInHomeComponent implements AfterViewInit
 
   private async loadVehicles()
   {
-    if (!this.map)
+    if (!this.map || !this.markerGroup)
     {
       return;
     }
@@ -98,6 +103,9 @@ export class SignedInHomeComponent implements AfterViewInit
 
     if (response.data)
     {
+      // Clear all previous markers to avoid duplicate ones
+      this.markerGroup.clearLayers();
+
       for (const vehicle of response.data)
       {
         L
@@ -115,7 +123,7 @@ export class SignedInHomeComponent implements AfterViewInit
               }),
             },
           )
-          .addTo(this.map);
+          .addTo(this.markerGroup);
       }
     }
   }
