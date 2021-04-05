@@ -13,7 +13,7 @@ export class SignedInHomeComponent implements AfterViewInit
   private markerGroup?: L.LayerGroup;
 
   public canUseGeolocation = true;
-  public hasGrantedGeolocationPermissions = false;
+  public hasGrantedGeolocationPermission = false;
 
   public vehicles?: IVehicle[];
 
@@ -44,7 +44,7 @@ export class SignedInHomeComponent implements AfterViewInit
       navigator.geolocation.getCurrentPosition(
         position =>
         {
-          this.hasGrantedGeolocationPermissions = true;
+          this.hasGrantedGeolocationPermission = true;
 
           this.map?.setView(
             [
@@ -57,7 +57,7 @@ export class SignedInHomeComponent implements AfterViewInit
         {
           if (error.code === error.PERMISSION_DENIED)
           {
-            this.hasGrantedGeolocationPermissions = false;
+            this.hasGrantedGeolocationPermission = false;
           }
         },
       );

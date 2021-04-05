@@ -4,7 +4,7 @@
     <div *ngIf="!canUseGeolocation" class="map-msg">
         <p>Il tuo dispositivo non supporta la funzione di geolocalizzazione</p>
     </div>
-    <div *ngIf="!hasGrantedGeolocationPermissions" class="map-msg">
+    <div *ngIf="!hasGrantedGeolocationPermission" class="map-msg">
         <p>Per poter vedere i mezzi nelle tue vicinanze è necessario permettere l'accesso alla tua posizione attuale</p>
     </div>
     <div id="map"></div>

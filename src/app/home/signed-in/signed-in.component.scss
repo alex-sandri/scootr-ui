@@ -17,11 +17,21 @@ main
         "map-message"
         "map";
     grid-template-rows: max-content auto;
+    gap: 1rem;
 }
 
 .map-msg
 {
     grid-area: map-message;
+    padding: 1rem;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+
+    p
+    {
+        margin: 0;
+    }
 }
 
 #map
