@@ -67,7 +67,10 @@ export class SignedInHomeComponent implements AfterViewInit
   private initMap()
   {
     this.map = L
-      .map("map", { zoom: 19 })
+      .map("map", {
+        zoom: 19,
+        preferCanvas: true,
+      })
       .on("dragend", () => this.loadVehicles())
       .on("zoomend", () => this.loadVehicles());
 
@@ -113,19 +116,30 @@ export class SignedInHomeComponent implements AfterViewInit
 
       for (const vehicle of response.data)
       {
+        let color: string = "white";
+
+        if (vehicle.battery_level > 80)
+        {
+          color = "green";
+        }
+        else if (vehicle.battery_level > 30)
+        {
+          color = "darkorange";
+        }
+        else
+        {
+          color = "red";
+        }
+
         L
-          .marker(
+          .circleMarker(
             [
               vehicle.location.latitude,
               vehicle.location.longitude,
             ],
             {
-              icon: L.icon({
-                iconSize: [ 25, 41 ],
-                iconAnchor: [ 13, 41 ],
-                iconUrl: "assets/marker-icon.png",
-                shadowUrl: "assets/marker-shadow.png",
-              }),
+              color,
+              fillOpacity: 1,
             },
           )
           .addTo(this.markerGroup);
