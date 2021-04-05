@@ -64,12 +64,12 @@ export class SignedInHomeComponent implements AfterViewInit
       .map("map", { zoom: 19 })
       .on("dragend", async () =>
       {
-        const center = this.map?.getCenter();
-
-        if (!center)
+        if (!this.map)
         {
           return;
         }
+
+        const center = this.map.getCenter();
 
         const response = await this.api.listVehiclesNearLocation(
           {
@@ -81,7 +81,15 @@ export class SignedInHomeComponent implements AfterViewInit
 
         if (response.data)
         {
-          this.vehicles = response.data;
+          for (const vehicle of response.data)
+          {
+            L
+              .marker([
+                vehicle.location.latitude,
+                vehicle.location.longitude,
+              ])
+              .addTo(this.map);
+          }
         }
       });
 
