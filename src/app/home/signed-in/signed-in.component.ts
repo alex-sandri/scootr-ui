@@ -27,7 +27,7 @@ export class SignedInHomeComponent implements AfterViewInit
 
     if (this.canUseGeolocation)
     {
-      navigator.geolocation.watchPosition(
+      navigator.geolocation.getCurrentPosition(
         position =>
         {
           if (!this.map)
