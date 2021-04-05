@@ -62,46 +62,8 @@ export class SignedInHomeComponent implements AfterViewInit
   {
     this.map = L
       .map("map", { zoom: 19 })
-      .on("dragend", async () =>
-      {
-        if (!this.map)
-        {
-          return;
-        }
-
-        const center = this.map.getCenter();
-
-        const response = await this.api.listVehiclesNearLocation(
-          {
-            latitude: center.lat,
-            longitude: center.lng,
-          },
-          1000,
-        );
-
-        if (response.data)
-        {
-          for (const vehicle of response.data)
-          {
-            L
-              .marker(
-                [
-                  vehicle.location.latitude,
-                  vehicle.location.longitude,
-                ],
-                {
-                  icon: L.icon({
-                    iconSize: [ 25, 41 ],
-                    iconAnchor: [ 13, 41 ],
-                    iconUrl: "assets/marker-icon.png",
-                    shadowUrl: "assets/marker-shadow.png",
-                  }),
-                },
-              )
-              .addTo(this.map);
-          }
-        }
-      });
+      .on("dragend", () => this.loadVehicles())
+      .on("zoomend", () => this.loadVehicles());
 
     L
       .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -110,5 +72,46 @@ export class SignedInHomeComponent implements AfterViewInit
         attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
       })
       .addTo(this.map);
+  }
+
+  private async loadVehicles()
+  {
+    if (!this.map)
+    {
+      return;
+    }
+
+    const center = this.map.getCenter();
+
+    const response = await this.api.listVehiclesNearLocation(
+      {
+        latitude: center.lat,
+        longitude: center.lng,
+      },
+      1000,
+    );
+
+    if (response.data)
+    {
+      for (const vehicle of response.data)
+      {
+        L
+          .marker(
+            [
+              vehicle.location.latitude,
+              vehicle.location.longitude,
+            ],
+            {
+              icon: L.icon({
+                iconSize: [ 25, 41 ],
+                iconAnchor: [ 13, 41 ],
+                iconUrl: "assets/marker-icon.png",
+                shadowUrl: "assets/marker-shadow.png",
+              }),
+            },
+          )
+          .addTo(this.map);
+      }
+    }
   }
 }
