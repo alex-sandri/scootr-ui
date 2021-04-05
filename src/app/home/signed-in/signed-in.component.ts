@@ -50,14 +50,19 @@ export class SignedInHomeComponent implements AfterViewInit
           {
             this.hasGrantedGeolocationPermissions = false;
           }
-        }
+        },
       );
     }
   }
 
   private initMap()
   {
-    this.map = L.map("map", { zoom: 19 });
+    this.map = L
+      .map("map", { zoom: 19 })
+      .on("dragend", () =>
+      {
+        console.log(this.map?.getCenter());
+      });
 
     L
       .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
