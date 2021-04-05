@@ -11,5 +11,7 @@
 </main>
 
 <aside>
-    <button>TODO</button>
+    <div *ngFor="let vehicle of vehicles">
+        <p>{{ vehicle.battery_level }}</p>
+    </div>
 </aside>

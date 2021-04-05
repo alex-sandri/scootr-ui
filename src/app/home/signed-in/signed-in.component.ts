@@ -114,7 +114,9 @@ export class SignedInHomeComponent implements AfterViewInit
       // Clear all previous markers to avoid duplicate ones
       this.markerGroup.clearLayers();
 
-      for (const vehicle of response.data)
+      this.vehicles = response.data;
+
+      for (const vehicle of this.vehicles)
       {
         let color: string = "white";
 
