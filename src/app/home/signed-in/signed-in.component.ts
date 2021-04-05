@@ -28,12 +28,12 @@ export class SignedInHomeComponent implements AfterViewInit
       zoom: 19,
     });
 
-    const tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      minZoom: 3,
-      attribution: "&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
-    });
-
-    tiles.addTo(this.map);
+    L
+      .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        minZoom: 3,
+        attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
+      })
+      .addTo(this.map);
   }
 }
