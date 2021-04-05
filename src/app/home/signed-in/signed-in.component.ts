@@ -21,6 +21,16 @@ export class SignedInHomeComponent implements AfterViewInit
 
   public ngAfterViewInit()
   {
+    this.initMap();
+
+    this.map?.setView(
+      // Rome, IT
+      [
+        41.9027835,
+        12.4963655,
+      ],
+    );
+
     this.askForGeolocationPermission();
   }
 
@@ -33,11 +43,6 @@ export class SignedInHomeComponent implements AfterViewInit
       navigator.geolocation.getCurrentPosition(
         position =>
         {
-          if (!this.map)
-          {
-            this.initMap();
-          }
-
           this.hasGrantedGeolocationPermissions = true;
 
           this.map?.setView(
@@ -68,7 +73,7 @@ export class SignedInHomeComponent implements AfterViewInit
     L
       .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
-        minZoom: 3,
+        minZoom: 6,
         attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
       })
       .addTo(this.map);

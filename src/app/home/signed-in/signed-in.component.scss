@@ -10,9 +10,23 @@
     height: 100%;
 }
 
+main
+{
+    display: grid;
+    grid-template-areas:
+        "map-message"
+        "map";
+    grid-template-rows: max-content auto;
+}
+
+.map-msg
+{
+    grid-area: map-message;
+}
+
 #map
 {
-    height: 100%;
+    grid-area: map;
 }
 
 aside
