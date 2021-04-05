@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as L from "leaflet";
+import { ApiService, IVehicle } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'signed-in-home',
@@ -13,7 +14,9 @@ export class SignedInHomeComponent implements AfterViewInit
   public canUseGeolocation = true;
   public hasGrantedGeolocationPermissions = false;
 
-  constructor()
+  public vehicles?: IVehicle[];
+
+  constructor(private api: ApiService)
   {}
 
   public ngAfterViewInit()
@@ -59,9 +62,27 @@ export class SignedInHomeComponent implements AfterViewInit
   {
     this.map = L
       .map("map", { zoom: 19 })
-      .on("dragend", () =>
+      .on("dragend", async () =>
       {
-        console.log(this.map?.getCenter());
+        const center = this.map?.getCenter();
+
+        if (!center)
+        {
+          return;
+        }
+
+        const response = await this.api.listVehiclesNearLocation(
+          {
+            latitude: center.lat,
+            longitude: center.lng,
+          },
+          1000,
+        );
+
+        if (response.data)
+        {
+          this.vehicles = response.data;
+        }
       });
 
     L

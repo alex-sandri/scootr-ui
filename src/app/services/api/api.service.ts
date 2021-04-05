@@ -11,6 +11,13 @@ interface IApiServiceResponse<T>
   }[],
 }
 
+export interface ISession
+{
+  id: string,
+  user: IUser,
+  expires_at: string,
+}
+
 export interface IUser
 {
   id: string,
@@ -21,11 +28,14 @@ export interface IUser
   fiscal_number: string,
 }
 
-export interface ISession
+export interface IVehicle
 {
   id: string,
-  user: IUser,
-  expires_at: string,
+  battery_level: number,
+  location: {
+    latitude: number,
+    longitude: number,
+  },
 }
 
 @Injectable({
@@ -73,6 +83,10 @@ export class ApiService
     return result;
   }
 
+  /* -------
+  -- AUTH --
+  ------- */
+
   public async retrieveSignInRequest(id: string): Promise<IApiServiceResponse<{ session: ISession }>>
   {
     return this.send("GET", `auth/email/requests/${id}`);
@@ -83,6 +97,10 @@ export class ApiService
     return this.send("POST", "auth/email", { email });
   }
 
+  /* -----------
+  -- SESSIONS --
+  ----------- */
+
   public async retrieveSession(id: string): Promise<IApiServiceResponse<ISession>>
   {
     return this.send("GET", `sessions/${id}`);
@@ -92,6 +110,10 @@ export class ApiService
   {
     return this.send("DELETE", `sessions/${id}`);
   }
+
+  /* --------
+  -- USERS --
+  -------- */
 
   public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>>
   {
@@ -119,5 +141,20 @@ export class ApiService
   public async deleteUser(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `users/${id}`);
+  }
+
+  /* -----------
+  -- VEHICLES --
+  ----------- */
+
+  public async listVehiclesNearLocation(
+    location: {
+      latitude: number,
+      longitude: number,
+    },
+    radius: number,
+  ): Promise<IApiServiceResponse<IVehicle[]>>
+  {
+    return this.send("GET", `vehicles?location[latitude]=${location.latitude}&location[longitude]=${location.longitude}&radius=${radius}`);
   }
 }
