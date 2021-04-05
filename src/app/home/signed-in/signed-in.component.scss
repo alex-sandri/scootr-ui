@@ -42,4 +42,6 @@ main
 aside
 {
     grid-area: aside;
+    width: 15em;
+    overflow: auto;
 }
