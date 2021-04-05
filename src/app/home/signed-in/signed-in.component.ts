@@ -84,10 +84,20 @@ export class SignedInHomeComponent implements AfterViewInit
           for (const vehicle of response.data)
           {
             L
-              .marker([
-                vehicle.location.latitude,
-                vehicle.location.longitude,
-              ])
+              .marker(
+                [
+                  vehicle.location.latitude,
+                  vehicle.location.longitude,
+                ],
+                {
+                  icon: L.icon({
+                    iconSize: [ 25, 41 ],
+                    iconAnchor: [ 13, 41 ],
+                    iconUrl: "assets/marker-icon.png",
+                    shadowUrl: "assets/marker-shadow.png",
+                  }),
+                },
+              )
               .addTo(this.map);
           }
         }
