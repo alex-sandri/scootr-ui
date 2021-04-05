@@ -10,23 +10,54 @@ export class SignedInHomeComponent implements AfterViewInit
 {
   private map?: L.Map;
 
+  public canUseGeolocation = true;
+  public hasGrantedGeolocationPermissions = false;
+
   constructor()
   {}
 
   public ngAfterViewInit()
   {
-    this.initMap();
+    this.askForGeolocationPermission();
+  }
+
+  private askForGeolocationPermission()
+  {
+    this.canUseGeolocation = "geolocation" in navigator;
+
+    if (this.canUseGeolocation)
+    {
+      navigator.geolocation.watchPosition(
+        position =>
+        {
+          if (!this.map)
+          {
+            this.initMap();
+          }
+
+          this.hasGrantedGeolocationPermissions = true;
+
+          this.map?.setView(
+            [
+              position.coords.latitude,
+              position.coords.longitude,
+            ],
+          );
+        },
+        error =>
+        {
+          if (error.code === error.PERMISSION_DENIED)
+          {
+            this.hasGrantedGeolocationPermissions = false;
+          }
+        }
+      );
+    }
   }
 
   private initMap()
   {
-    this.map = L.map("map", {
-      center: [
-        41.9027835,
-        12.4963655,
-      ],
-      zoom: 19,
-    });
+    this.map = L.map("map", { zoom: 19 });
 
     L
       .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
