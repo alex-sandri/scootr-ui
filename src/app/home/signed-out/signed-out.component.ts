@@ -62,4 +62,12 @@ export class SignedOutHomeComponent
 
   constructor()
   {}
+
+  public onSpidIdpListClick(e: Event)
+  {
+    if ((e.target as HTMLElement).tagName === "ASIDE")
+    {
+      this.showSpidIdpList = false;
+    }
+  }
 }

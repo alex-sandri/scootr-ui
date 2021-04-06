@@ -20,7 +20,7 @@
     </div>
 </main>
 
-<aside *ngIf="showSpidIdpList">
+<aside *ngIf="showSpidIdpList" (click)="onSpidIdpListClick($event)">
     <div class="spid-idp-list">
         <a
             *ngFor="let spidIdentityProvider of spidIdentityProviders"
