@@ -19,3 +19,20 @@
         <img src="/assets/environment.svg" alt="">
     </div>
 </main>
+
+<aside>
+    <div class="spid-idp-list">
+        <a
+            *ngFor="let spidIdentityProvider of spidIdentityProviders"
+
+            href="/login?idp={{ spidIdentityProvider.id }}"
+            title="Entra con {{ spidIdentityProvider.name }}"
+            class="button fill"
+        >
+            <img
+                src="https://italia.github.io/spid-smart-button/img/idp-logos/spid-idp-{{ spidIdentityProvider.imageName }}.svg"
+                alt="{{ spidIdentityProvider.name }}"
+            >
+        </a>
+    </div>
+</aside>

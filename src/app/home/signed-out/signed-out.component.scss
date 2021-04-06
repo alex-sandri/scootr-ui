@@ -57,3 +57,33 @@ main
         height: 1.5rem;
     }
 }
+
+aside
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: #0066cc;
+
+    .spid-idp-list
+    {
+        padding: 1rem;
+
+        a
+        {
+            display: grid;
+            place-content: center;
+
+            img
+            {
+                height: 1.5rem;
+            }
+
+            &:not(:first-child)
+            {
+                margin-top: 1rem;
+            }
+        }
+    }
+}
