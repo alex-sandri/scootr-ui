@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'signed-out-home',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class SignedOutHomeComponent
 {
+  public spidSignInEndpoint = environment.spid.endpoint;
+
   public spidIdentityProviders = [
     {
       name: "Aruba ID",

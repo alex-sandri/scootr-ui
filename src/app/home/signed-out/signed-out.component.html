@@ -25,7 +25,7 @@
         <a
             *ngFor="let spidIdentityProvider of spidIdentityProviders"
 
-            href="/login?idp={{ spidIdentityProvider.id }}"
+            href="{{ spidSignInEndpoint }}/signin?idp={{ spidIdentityProvider.id }}"
             title="Entra con {{ spidIdentityProvider.name }}"
             class="button fill"
         >
