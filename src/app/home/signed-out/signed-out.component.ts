@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class SignedOutHomeComponent
 {
+  public showSpidIdpList = false;
+
   public spidSignInEndpoint = environment.spid.endpoint;
 
   public spidIdentityProviders = [
