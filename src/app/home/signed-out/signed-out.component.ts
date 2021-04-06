@@ -14,49 +14,40 @@ export class SignedOutHomeComponent
 
   public spidIdentityProviders = [
     {
+      id: "arubaid",
       name: "Aruba ID",
-      id: "https://loginspid.aruba.it",
-      imageName: "arubaid",
     },
     {
+      id: "infocertid",
       name: "Infocert ID",
-      id: "https://identity.infocert.it",
-      imageName: "infocertid",
     },
     {
+      id: "intesaid",
       name: "Intesa ID",
-      id: "https://spid.intesa.it",
-      imageName: "intesaid",
     },
     {
+      id: "lepidaid",
       name: "Lepida ID",
-      id: "https://id.lepida.it/idp/shibboleth",
-      imageName: "lepidaid",
     },
     {
+      id: "namirialid",
       name: "Namirial ID",
-      id: "https://idp.namirialtsp.com/idp",
-      imageName: "namirialid",
     },
     {
+      id: "posteid",
       name: "Poste ID",
-      id: "https://posteid.poste.it",
-      imageName: "posteid",
     },
     {
+      id: "sielteid",
       name: "Sielte ID",
-      id: "https://identity.sieltecloud.it",
-      imageName: "sielteid",
     },
     {
+      id: "spiditalia",
       name: "SPIDItalia Register.it",
-      id: "https://spid.register.it",
-      imageName: "spiditalia",
     },
     {
+      id: "timid",
       name: "Tim ID",
-      id: "https://login.id.tim.it/affwebservices/public/saml2sso",
-      imageName: "timid",
     },
   ];
 
