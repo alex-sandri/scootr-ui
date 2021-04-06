@@ -52,7 +52,15 @@ export class SignedOutHomeComponent
   ];
 
   constructor()
-  {}
+  {
+    if (!environment.production)
+    {
+      this.spidIdentityProviders.push({
+        id: "idp_testenv2",
+        name: "Test",
+      });
+    }
+  }
 
   public onSpidIdpListClick(e: Event)
   {
