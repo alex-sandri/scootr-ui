@@ -9,6 +9,7 @@ import { AuthService } from './services/auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignedOutHomeComponent } from './home/signed-out/signed-out.component';
 import { SignedInHomeComponent } from './home/signed-in/signed-in.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SignedInHomeComponent } from './home/signed-in/signed-in.component';
     ReactiveFormsModule,
   ],
   providers: [
+    CookieService,
     {
       provide: APP_INITIALIZER,
       useFactory: (auth: AuthService) =>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { IUser, ApiService } from '../api/api.service';
 
 @Injectable({
@@ -9,17 +10,26 @@ export class AuthService
 {
   public user?: IUser;
 
-  constructor(private api: ApiService, private router: Router)
+  constructor(private api: ApiService, private cookie: CookieService, private router: Router)
   {}
 
   public async init(): Promise<IUser | null>
   {
-    const sessionId = localStorage.getItem("session.id");
+    let sessionId = localStorage.getItem("session.id");
+
+    if (this.cookie.check("session_id"))
+    {
+      sessionId = this.cookie.get("session_id");
+
+      this.cookie.delete("session_id", "/");
+    }
 
     if (!sessionId)
     {
       return null;
     }
+
+    localStorage.setItem("session.id", sessionId);
 
     const response = await this.api.retrieveSession(sessionId);
 
