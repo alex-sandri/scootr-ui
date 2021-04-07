@@ -12,9 +12,27 @@
         <p>
             Diventa parte della rivoluzione della micro-mobilità sostenibile.
         </p>
-        <a routerLink="/signup" class="button">
-            Registrati
-        </a>
+        <button id="spid-button" (click)="showSpidIdpList = !showSpidIdpList">
+            <img src="/assets/spid-icon.svg" alt="">
+            Entra con SPID
+        </button>
         <img src="/assets/environment.svg" alt="">
     </div>
 </main>
+
+<aside *ngIf="showSpidIdpList" (click)="onSpidIdpListClick($event)">
+    <div class="spid-idp-list">
+        <a
+            *ngFor="let spidIdentityProvider of spidIdentityProviders"
+
+            href="{{ spidSignInEndpoint }}/signin.php?idp={{ spidIdentityProvider.id }}"
+            title="Entra con {{ spidIdentityProvider.name }}"
+            class="button fill"
+        >
+            <img
+                src="https://italia.github.io/spid-smart-button/img/idp-logos/spid-idp-{{ spidIdentityProvider.id }}.svg"
+                alt="{{ spidIdentityProvider.name }}"
+            >
+        </a>
+    </div>
+</aside>

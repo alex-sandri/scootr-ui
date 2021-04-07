@@ -3,4 +3,7 @@ export const environment = {
   api: {
     endpoint: "TODO",
   },
+  spid: {
+    endpoint: "TODO",
+  },
 };

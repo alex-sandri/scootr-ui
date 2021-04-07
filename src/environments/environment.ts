@@ -7,6 +7,9 @@ export const environment = {
   api: {
     endpoint: "http://localhost:4000",
   },
+  spid: {
+    endpoint: "http://localhost:8099",
+  },
 };
 
 /*
