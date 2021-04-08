@@ -72,9 +72,17 @@ export class SignedInHomeComponent implements AfterViewInit
     this.map = L
       .map("map", {
         zoom: 19,
+        zoomControl: false,
       })
       .on("dragend", () => this.loadVehicles())
       .on("zoomend", () => this.loadVehicles());
+
+    L
+      .control
+      .zoom({
+        position: "bottomright",
+      })
+      .addTo(this.map);
 
     this.markers = L
       .markerClusterGroup()

@@ -9,19 +9,15 @@
     height: 100%;
 }
 
-main
+app-header,
+.map-msg
 {
-    display: grid;
-    grid-template-areas:
-        "map-message"
-        "map";
-    grid-template-rows: max-content auto;
-    gap: 1rem;
+    position: relative;
+    z-index: 999;
 }
 
 .map-msg
 {
-    grid-area: map-message;
     padding: 1rem;
     color: var(--secondary-color);
     background-color: var(--primary-color);
@@ -35,5 +31,10 @@ main
 
 #map
 {
-    grid-area: map;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
