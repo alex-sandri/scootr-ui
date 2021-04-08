@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header (search)="searchPlace($event)"></app-header>
 
 <main>
     <div *ngIf="!canUseGeolocation" class="map-msg">

@@ -16,8 +16,6 @@ export class SignedInHomeComponent implements AfterViewInit
   public canUseGeolocation = true;
   public hasGrantedGeolocationPermission = false;
 
-  private vehicles?: IVehicle[];
-
   constructor(private api: ApiService)
   {}
 
@@ -36,6 +34,23 @@ export class SignedInHomeComponent implements AfterViewInit
     this.loadVehicles();
 
     this.askForGeolocationPermission();
+  }
+
+  public async searchPlace(query: string)
+  {
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
+
+    const body: {
+      lat: number,
+      lon: number,
+    }[] = await response.json();
+
+    this.map?.setView(
+      [
+        body[0].lat,
+        body[0].lon,
+      ],
+    );
   }
 
   private askForGeolocationPermission()
