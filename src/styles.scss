@@ -43,6 +43,12 @@ footer
     grid-area: footer;
 }
 
+.mat-icon
+{
+    display: flex;
+    font-family: "Material Icons";
+}
+
 a,
 .link,
 button

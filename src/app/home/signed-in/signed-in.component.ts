@@ -13,6 +13,9 @@ export class SignedInHomeComponent implements AfterViewInit
   private map?: L.Map;
   private markers?: L.MarkerClusterGroup;
 
+  // Rome, IT
+  public currentLocation: [ number, number ] = [ 41.9027835, 12.4963655 ];
+
   public canUseGeolocation = true;
   public hasGrantedGeolocationPermission = false;
 
@@ -23,17 +26,16 @@ export class SignedInHomeComponent implements AfterViewInit
   {
     this.initMap();
 
-    this.map?.setView(
-      // Rome, IT
-      [
-        41.9027835,
-        12.4963655,
-      ],
-    );
+    this.setMapCenter();
 
     this.loadVehicles();
 
     this.askForGeolocationPermission();
+  }
+
+  public setMapCenter(coords?: [ number, number ])
+  {
+    this.map?.setView(coords ?? this.currentLocation);
   }
 
   public async searchPlace(query: string)
@@ -45,7 +47,7 @@ export class SignedInHomeComponent implements AfterViewInit
       lon: number,
     }[] = await response.json();
 
-    this.map?.setView(
+    this.setMapCenter(
       [
         body[0].lat,
         body[0].lon,
@@ -64,12 +66,12 @@ export class SignedInHomeComponent implements AfterViewInit
         {
           this.hasGrantedGeolocationPermission = true;
 
-          this.map?.setView(
-            [
-              position.coords.latitude,
-              position.coords.longitude,
-            ],
-          );
+          this.currentLocation = [
+            position.coords.latitude,
+            position.coords.longitude,
+          ];
+
+          this.setMapCenter();
         },
         error =>
         {
@@ -95,7 +97,7 @@ export class SignedInHomeComponent implements AfterViewInit
     L
       .control
       .zoom({
-        position: "bottomright",
+        position: "bottomleft",
       })
       .addTo(this.map);
 

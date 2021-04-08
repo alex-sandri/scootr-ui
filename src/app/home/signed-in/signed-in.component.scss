@@ -10,7 +10,8 @@
 }
 
 app-header,
-.map-msg
+.map-msg,
+footer
 {
     position: relative;
     z-index: 999;
@@ -37,4 +38,17 @@ app-header,
     width: 100%;
     height: 100%;
     z-index: 0;
+}
+
+footer
+{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+
+    button
+    {
+        padding: 1rem;
+        border-radius: 50%;
+    }
 }
