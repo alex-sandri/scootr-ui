@@ -38,6 +38,11 @@ export class SignedInHomeComponent implements AfterViewInit
     this.map?.setView(coords ?? this.currentLocation);
   }
 
+  public scanQrCode()
+  {
+    // TODO
+  }
+
   public async searchPlace(query: string)
   {
     const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
