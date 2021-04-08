@@ -1,5 +1,5 @@
 <header [class.search-visible]="auth.user">
-    <a routerLink="" class="dark">
+    <a routerLink="">
         scootr
     </a>
     <form
@@ -11,20 +11,19 @@
             #searchInput
 
             type="text"
-            class="dark"
             placeholder="Cerca un posto"
         >
     </form>
-    <button class="dark" *ngIf="auth.user" (click)="showNav = !showNav">
+    <button *ngIf="auth.user" (click)="showNav = !showNav">
         &#8942;
     </button>
 </header>
 
 <nav *ngIf="showNav">
-    <button class="dark" routerLink="/settings">
+    <button routerLink="/settings">
         Impostazioni
     </button>
-    <button class="dark" (click)="auth.signOut()">
+    <button (click)="auth.signOut()">
         Esci
     </button>
 </nav>
