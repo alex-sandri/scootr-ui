@@ -70,7 +70,6 @@ export class SignedInHomeComponent implements AfterViewInit
     this.map = L
       .map("map", {
         zoom: 19,
-        preferCanvas: true,
       })
       .on("dragend", () => this.loadVehicles())
       .on("zoomend", () => this.loadVehicles());
