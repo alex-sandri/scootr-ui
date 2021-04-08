@@ -19,15 +19,11 @@ footer
 
 .map-msg
 {
+    color: black;
+    background-color: var(--link-color);
     padding: 1rem;
-    color: var(--secondary-color);
-    background-color: var(--primary-color);
+    max-width: 30ch;
     border-radius: 0.5rem;
-
-    p
-    {
-        margin: 0;
-    }
 }
 
 #map
