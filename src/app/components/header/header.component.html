@@ -1,5 +1,30 @@
-<header>
+<header [class.search-visible]="auth.user">
     <a routerLink="" class="dark">
         scootr
     </a>
+    <form
+        *ngIf="auth.user"
+
+        (submit)="$event.preventDefault(); search.emit(searchInput.value)"
+    >
+        <input
+            #searchInput
+
+            type="search"
+            class="dark"
+            placeholder="Cerca un posto"
+        >
+    </form>
+    <button class="dark" *ngIf="auth.user" (click)="showNav = !showNav">
+        &#8942;
+    </button>
 </header>
+
+<nav *ngIf="showNav">
+    <button class="dark" routerLink="/settings">
+        Impostazioni
+    </button>
+    <button class="dark" (click)="auth.signOut()">
+        Esci
+    </button>
+</nav>

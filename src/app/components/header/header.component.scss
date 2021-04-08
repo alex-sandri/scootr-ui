@@ -11,13 +11,59 @@ header
 {
     display: grid;
     grid-template-columns: auto max-content;
+    grid-template-areas: "logo menu-button";
     align-items: center;
     gap: 1em;
 
-    a:first-child
+    a
     {
+        grid-area: logo;
         color: var(--secondary-color);
         font-size: 2em;
         width: max-content;
+    }
+
+    form
+    {
+        grid-area: search-form;
+        max-width: unset;
+
+        input
+        {
+            width: 100%;
+        }
+    }
+
+    button
+    {
+        grid-area: menu-button;
+    }
+
+    &.search-visible
+    {
+        grid-template-columns: auto max-content max-content;
+        grid-template-areas: "logo search-form menu-button";
+    }
+}
+
+nav
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1em;
+    background-color: var(--primary-color);
+    margin-top: 1em;
+    border-radius: 1em;
+}
+
+@media (max-width: 650px)
+{
+    header.search-visible
+    {
+        grid-template-columns: auto min-content;
+        grid-template-areas:
+            "logo menu-button"
+            "search-form search-form";
     }
 }

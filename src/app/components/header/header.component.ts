@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent
 {
-  constructor()
+  @Output()
+  public search = new EventEmitter<string>();
+
+  public showNav = false;
+
+  constructor(public auth: AuthService)
   {}
 }
