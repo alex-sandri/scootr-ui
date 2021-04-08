@@ -2,9 +2,8 @@
 {
     display: grid;
     grid-template-areas:
-        "header header"
-        "main aside";
-    grid-template-columns: auto max-content;
+        "header"
+        "main";
     grid-template-rows: max-content auto;
     gap: 1rem;
     height: 100%;
@@ -37,11 +36,4 @@ main
 #map
 {
     grid-area: map;
-}
-
-aside
-{
-    grid-area: aside;
-    width: 15em;
-    overflow: auto;
 }

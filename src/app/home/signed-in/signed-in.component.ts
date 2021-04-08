@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as L from "leaflet";
+import "leaflet.markercluster";
 import { ApiService, IVehicle } from 'src/app/services/api/api.service';
 
 @Component({
@@ -10,12 +11,12 @@ import { ApiService, IVehicle } from 'src/app/services/api/api.service';
 export class SignedInHomeComponent implements AfterViewInit
 {
   private map?: L.Map;
-  private markerGroup?: L.LayerGroup;
+  private markers?: L.MarkerClusterGroup;
 
   public canUseGeolocation = true;
   public hasGrantedGeolocationPermission = false;
 
-  public vehicles?: IVehicle[];
+  private vehicles?: IVehicle[];
 
   constructor(private api: ApiService)
   {}
@@ -74,8 +75,8 @@ export class SignedInHomeComponent implements AfterViewInit
       .on("dragend", () => this.loadVehicles())
       .on("zoomend", () => this.loadVehicles());
 
-    this.markerGroup = L
-      .layerGroup()
+    this.markers = L
+      .markerClusterGroup()
       .addTo(this.map);
 
     L
@@ -89,7 +90,7 @@ export class SignedInHomeComponent implements AfterViewInit
 
   private async loadVehicles()
   {
-    if (!this.map || !this.markerGroup)
+    if (!this.map || !this.markers)
     {
       return;
     }
@@ -112,39 +113,31 @@ export class SignedInHomeComponent implements AfterViewInit
     if (response.data)
     {
       // Clear all previous markers to avoid duplicate ones
-      this.markerGroup.clearLayers();
+      this.markers.clearLayers();
 
-      this.vehicles = response.data;
-
-      for (const vehicle of this.vehicles)
+      for (const vehicle of response.data)
       {
-        let color: string = "white";
-
-        if (vehicle.battery_level > 80)
-        {
-          color = "green";
-        }
-        else if (vehicle.battery_level > 30)
-        {
-          color = "darkorange";
-        }
-        else
-        {
-          color = "red";
-        }
-
-        L
-          .circleMarker(
-            [
-              vehicle.location.latitude,
-              vehicle.location.longitude,
-            ],
-            {
-              color,
-              fillOpacity: 1,
-            },
-          )
-          .addTo(this.markerGroup);
+        this.markers
+          .addLayer(
+            L
+              .marker(
+                [
+                  vehicle.location.latitude,
+                  vehicle.location.longitude,
+                ],
+                {
+                  icon: L.icon({
+                    iconUrl: "/assets/vehicles/scooter.svg",
+                    iconSize: [ 25, 25 ],
+                  }),
+                },
+              )
+              .bindPopup(
+                L
+                  .popup()
+                  .setContent(`Livello batteria: ${vehicle.battery_level}%`),
+              ),
+          );
       }
     }
   }
