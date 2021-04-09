@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignedOutHomeComponent } from './home/signed-out/signed-out.component';
 import { SignedInHomeComponent } from './home/signed-in/signed-in.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ScanComponent } from './home/signed-in/scan/scan.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
     HeaderComponent,
     SignedOutHomeComponent,
     SignedInHomeComponent,
+    ScanComponent,
   ],
   imports: [
     BrowserModule,
