@@ -1,5 +1,5 @@
-<header [class.search-visible]="auth.user && router.url === '/'">
-    <a routerLink="">
+<header [class.dark]="theme === 'light'" [class.search-visible]="auth.user && router.url === '/'">
+    <a routerLink="" [class.dark]="theme === 'light'">
         scootr
     </a>
     <form
@@ -12,18 +12,19 @@
 
             type="text"
             placeholder="Cerca un posto"
+            [class.dark]="theme === 'light'"
         >
     </form>
-    <button *ngIf="auth.user" (click)="showNav = !showNav">
+    <button *ngIf="auth.user" [class.dark]="theme === 'light'" (click)="showNav = !showNav">
         &#8942;
     </button>
 </header>
 
 <nav *ngIf="showNav">
-    <button routerLink="/settings">
+    <button routerLink="/settings" [class.dark]="theme === 'light'">
         Impostazioni
     </button>
-    <button (click)="auth.signOut()">
+    <button [class.dark]="theme === 'light'" (click)="auth.signOut()">
         Esci
     </button>
 </nav>

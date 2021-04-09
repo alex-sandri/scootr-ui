@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -9,6 +9,9 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class HeaderComponent
 {
+  @Input()
+  public theme: "light" | "dark" = "dark";
+
   @Output()
   public search = new EventEmitter<string>();
 

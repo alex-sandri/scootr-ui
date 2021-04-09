@@ -5,6 +5,11 @@
     padding: 1em;
     background-color: var(--secondary-color);
     border-radius: 0.5rem;
+
+    &[theme=light]
+    {
+        background-color: var(--primary-color);
+    }
 }
 
 header
@@ -21,6 +26,11 @@ header
         color: var(--primary-color);
         font-size: 2em;
         width: max-content;
+
+        &.dark
+        {
+            color: var(--secondary-color);
+        }
     }
 
     form
