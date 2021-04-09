@@ -11,6 +11,9 @@ import { SignedOutHomeComponent } from './home/signed-out/signed-out.component';
 import { SignedInHomeComponent } from './home/signed-in/signed-in.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ScanComponent } from './home/signed-in/scan/scan.component';
+import { MenuComponent } from './settings/menu/menu.component';
+import { DetailsComponent } from './settings/details/details.component';
+import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { ScanComponent } from './home/signed-in/scan/scan.component';
     SignedOutHomeComponent,
     SignedInHomeComponent,
     ScanComponent,
+    MenuComponent,
+    DetailsComponent,
+    PaymentMethodsComponent,
   ],
   imports: [
     BrowserModule,
