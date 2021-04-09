@@ -1,9 +1,9 @@
-<header [class.search-visible]="auth.user">
+<header [class.search-visible]="auth.user && router.url === '/'">
     <a routerLink="">
         scootr
     </a>
     <form
-        *ngIf="auth.user"
+        *ngIf="auth.user && router.url === '/'"
 
         (submit)="$event.preventDefault(); search.emit(searchInput.value)"
     >
