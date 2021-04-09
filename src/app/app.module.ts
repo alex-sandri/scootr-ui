@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,10 @@ import { ScanComponent } from './home/signed-in/scan/scan.component';
 import { SettingsMenuComponent } from './settings/menu/menu.component';
 import { DetailsComponent } from './settings/details/details.component';
 import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
+import { registerLocaleData } from '@angular/common';
+import localeIt from '@angular/common/locales/it';
+
+registerLocaleData(localeIt, "it");
 
 @NgModule({
   declarations: [
@@ -45,6 +49,10 @@ import { PaymentMethodsComponent } from './settings/payment-methods/payment-meth
       },
       deps: [ AuthService ],
       multi: true,
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: "it",
     },
   ],
   bootstrap: [AppComponent]
