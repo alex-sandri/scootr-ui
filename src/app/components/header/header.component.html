@@ -21,9 +21,9 @@
 </header>
 
 <nav *ngIf="showNav">
-    <button routerLink="/settings" [class.dark]="theme === 'light'">
+    <a routerLink="/settings" class="button" [class.dark]="theme === 'light'">
         Impostazioni
-    </button>
+    </a>
     <button [class.dark]="theme === 'light'" (click)="auth.signOut()">
         Esci
     </button>
