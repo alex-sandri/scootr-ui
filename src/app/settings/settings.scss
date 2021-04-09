@@ -1,0 +1,23 @@
+:host
+{
+    display: grid;
+    grid-template-rows: max-content auto;
+    grid-template-columns: 30% auto;
+    grid-template-areas:
+        "header header"
+        "aside main";
+    gap: 1em;
+    height: 100%;
+}
+
+@media (max-width: 800px)
+{
+    :host
+    {
+        grid-template-rows: max-content max-content auto;
+        grid-template-areas:
+            "header header"
+            "aside aside"
+            "main main";
+    }
+}

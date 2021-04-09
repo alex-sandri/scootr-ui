@@ -1,1 +1,25 @@
-<p>menu works!</p>
+<aside>
+    <section>
+        <div class="title"></div>
+        <div class="content">
+            <a
+                routerLink="/settings/details"
+                [class.selected]="section === 'details'"
+            >
+                Dettagli
+            </a>
+            <a
+                routerLink="/settings/advanced"
+                [class.selected]="section === 'advanced'"
+            >
+                Avanzate
+            </a>
+            <a
+                routerLink="/settings/payment-methods"
+                [class.selected]="section === 'payment-methods'"
+            >
+                Metodi di pagamento
+            </a>
+        </div>
+    </section>
+</aside>
