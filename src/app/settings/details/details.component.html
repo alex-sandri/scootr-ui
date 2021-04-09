@@ -7,8 +7,27 @@
         <div class="title">
             <h1>Dettagli</h1>
         </div>
-        <div class="content">
-            TODO
+        <div *ngIf="auth.user" class="content">
+            <div>
+                <h2>Nome</h2>
+                <span>{{ auth.user.first_name }}</span>
+            </div>
+            <div>
+                <h2>Cognome</h2>
+                <span>{{ auth.user.last_name }}</span>
+            </div>
+            <div>
+                <h2>Email</h2>
+                <span>{{ auth.user.email }}</span>
+            </div>
+            <div>
+                <h2>Data di nascita</h2>
+                <span>{{ auth.user.birth_date | date }}</span>
+            </div>
+            <div>
+                <h2>Codice Fiscale</h2>
+                <span>{{ auth.user.fiscal_number }}</span>
+            </div>
         </div>
     </section>
 </main>
