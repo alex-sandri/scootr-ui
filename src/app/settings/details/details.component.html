@@ -7,25 +7,25 @@
         <div class="title">
             <h1>Dettagli</h1>
         </div>
-        <div *ngIf="auth.user" class="content">
+        <div *ngIf="auth.user" class="content details">
             <div>
-                <h2>Nome</h2>
+                <h3>Nome</h3>
                 <span>{{ auth.user.first_name }}</span>
             </div>
             <div>
-                <h2>Cognome</h2>
+                <h3>Cognome</h3>
                 <span>{{ auth.user.last_name }}</span>
             </div>
             <div>
-                <h2>Email</h2>
+                <h3>Email</h3>
                 <span>{{ auth.user.email }}</span>
             </div>
             <div>
-                <h2>Data di nascita</h2>
+                <h3>Data di nascita</h3>
                 <span>{{ auth.user.birth_date | date:"longDate" }}</span>
             </div>
             <div>
-                <h2>Codice Fiscale</h2>
+                <h3>Codice Fiscale</h3>
                 <span>{{ auth.user.fiscal_number }}</span>
             </div>
         </div>
