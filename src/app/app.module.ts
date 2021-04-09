@@ -13,9 +13,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { ScanComponent } from './home/signed-in/scan/scan.component';
 import { SettingsMenuComponent } from './settings/menu/menu.component';
 import { DetailsComponent } from './settings/details/details.component';
-import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
 import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
+import { WalletsComponent } from './settings/wallets/wallets.component';
+import { PaymentMethodsComponent } from './settings/wallets/payment-methods/payment-methods.component';
+import { AddComponent } from './settings/wallets/payment-methods/add/add.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -29,7 +31,9 @@ registerLocaleData(localeIt, "it");
     ScanComponent,
     SettingsMenuComponent,
     DetailsComponent,
+    WalletsComponent,
     PaymentMethodsComponent,
+    AddComponent,
   ],
   imports: [
     BrowserModule,
