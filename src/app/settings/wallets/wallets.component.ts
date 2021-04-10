@@ -36,6 +36,16 @@ export class WalletsComponent implements OnInit
 
   public async removeWallet(wallet: IWallet)
   {
-    // TODO
+    if (!this.wallets)
+    {
+      return;
+    }
+
+    const response = await this.api.deleteWallet(wallet.id);
+
+    if (!response.errors)
+    {
+      this.wallets = this.wallets.filter(p => p.id !== wallet.id);
+    }
   }
 }
