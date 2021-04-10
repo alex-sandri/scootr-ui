@@ -109,6 +109,12 @@ button,
         background-color: var(--secondary-color);
     }
 
+    &.danger
+    {
+        color: white;
+        background-color: var(--danger-color);
+    }
+
     &:focus
     {
         box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
@@ -116,6 +122,11 @@ button,
         &.dark
         {
             box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
+
+            &.danger
+            {
+                box-shadow: 0 0 0 0.2rem rgba($danger-color, 0.5);
+            }
         }
     }
 
