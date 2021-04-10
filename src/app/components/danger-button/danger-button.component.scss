@@ -15,8 +15,9 @@
         background-color: var(--primary-color);
         color: var(--secondary-color);
         border-radius: 0.5rem;
+        max-width: 65ch;
 
-        b
+        .message
         {
             font-size: 1.5em;
         }

@@ -8,7 +8,7 @@
 
 <div *ngIf="showConfirmDialog" class="dialog-container" (click)="onDialogContainerClick($event)">
     <div class="dialog">
-        <b>{{ alertText }}</b>
+        <span class="message">{{ alertText }}</span>
         <div class="actions">
             <button class="danger dark" (click)="onConfirm()">
                 {{ text }}
