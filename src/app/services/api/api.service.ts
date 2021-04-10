@@ -176,6 +176,11 @@ export class ApiService
     return this.send("GET", `users/${userId}/wallets`);
   }
 
+  public async createWalletForUser(userId: string, walletId: string): Promise<IApiServiceResponse<IWallet>>
+  {
+    return this.send("POST", `users/${userId}/wallets`, { id: walletId });
+  }
+
   public async setDefaultWalletForUser(userId: string, walletId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("PUT", `users/${userId}/wallets/default`, { id: walletId });
