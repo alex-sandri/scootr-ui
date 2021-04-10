@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-new-wallet',
@@ -14,16 +15,27 @@ export class NewWalletComponent
     name: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
+  constructor
+  (
+    private api: ApiService,
+    private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+  )
   {}
 
   public async onSubmit(e: Event)
   {
     e.preventDefault();
 
-    const response = await this.api.createWallet({
+    if (!this.auth.user)
+    {
+      return;
+    }
+
+    const response = await this.api.createWalletForUser({
       name: this.form.get("name")?.value ?? "",
-    });
+    }, this.auth.user.id);
 
     Object.entries(this.form.controls).forEach(([ name, control ]) =>
     {
