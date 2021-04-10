@@ -31,7 +31,22 @@ export class WalletsComponent implements OnInit
 
   public async setDefaultWallet(wallet: IWallet)
   {
-    // TODO
+    if (!this.auth.user || !this.wallets)
+    {
+      return;
+    }
+
+    const response = await this.api.setDefaultWalletForUser(this.auth.user.id, wallet.id);
+
+    if (!response.errors)
+    {
+      this.wallets.map(_ =>
+      {
+        _.is_default = wallet.id === _.id;
+
+        return _;
+      });
+    }
   }
 
   public async removeWallet(wallet: IWallet)
