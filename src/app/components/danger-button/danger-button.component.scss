@@ -1,0 +1,31 @@
+.dialog-container
+{
+    display: grid;
+    place-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(black, 0.5);
+
+    .dialog
+    {
+        padding: 3em;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        border-radius: 0.5rem;
+
+        b
+        {
+            font-size: 1.5em;
+        }
+
+        .actions
+        {
+            display: flex;
+            gap: 1em;
+            margin-top: 2em;
+        }
+    }
+}
