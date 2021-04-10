@@ -1,1 +1,33 @@
-<p>new works!</p>
+<app-header></app-header>
+
+<settings-menu section="wallets"></settings-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Crea nuovo portafoglio</h1>
+        </div>
+        <div class="content">
+            <form [formGroup]="form" (submit)="onSubmit($event)">
+                <label>
+                    Nome
+                    <input
+                        formControlName="name"
+
+                        type="text"
+                        name="name"
+                        required
+                    >
+                    <div class="errors">
+                        <p *ngFor="let error of form.get('name')?.errors?.errors">
+                            {{ error.error }}
+                        </p>
+                    </div>
+                </label>
+                <button type="submit">
+                    Conferma
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
