@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class HeaderComponent
 {
   @Input()
-  public theme: "light" | "dark" = "dark";
+  public theme: "light" | "dark" = "light";
 
   @Output()
   public search = new EventEmitter<string>();
