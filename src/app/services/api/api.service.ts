@@ -176,6 +176,11 @@ export class ApiService
     return this.send("GET", `users/${userId}/wallets`);
   }
 
+  public async retrieveWallet(walletId: string): Promise<IApiServiceResponse<IWallet>>
+  {
+    return this.send("GET", `wallets/${walletId}`);
+  }
+
   public async createWalletForUser(userId: string, walletId: string): Promise<IApiServiceResponse<IWallet>>
   {
     return this.send("POST", `users/${userId}/wallets`, { id: walletId });
