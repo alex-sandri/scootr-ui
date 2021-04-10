@@ -1,0 +1,18 @@
+div
+{
+    margin: auto;
+    border: 0.3em solid var(--primary-color);
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    border-left-color: transparent;
+    animation: rotate 1s linear infinite;
+
+    @keyframes rotate
+    {
+        to
+        {
+            transform: rotate(360deg);
+        }
+    }
+}
