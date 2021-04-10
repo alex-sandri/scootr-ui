@@ -21,7 +21,12 @@ export class WalletsComponent implements OnInit
       return;
     }
 
-    this.api.listWalletsForUser(this.auth.user.id);
+    this.api
+      .listWalletsForUser(this.auth.user.id)
+      .then(response =>
+      {
+        this.wallets = response.data;
+      });
   }
 
   public async setDefaultWallet(wallet: IWallet)
