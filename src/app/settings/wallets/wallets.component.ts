@@ -36,7 +36,7 @@ export class WalletsComponent implements OnInit
       return;
     }
 
-    const response = await this.api.setDefaultWalletForUser(this.auth.user.id, wallet.id);
+    const response = await this.api.setDefaultWalletForUser(wallet.id, this.auth.user.id);
 
     if (!response.errors)
     {

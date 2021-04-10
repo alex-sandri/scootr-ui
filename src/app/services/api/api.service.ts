@@ -167,12 +167,14 @@ export class ApiService
     return this.send("GET", `wallets/${walletId}`);
   }
 
-  public async createWalletForUser(userId: string, walletId: string): Promise<IApiServiceResponse<IWallet>>
+  public async createWalletForUser(data: {
+    name: string,
+  }, userId: string): Promise<IApiServiceResponse<IWallet>>
   {
-    return this.send("POST", `users/${userId}/wallets`, { id: walletId });
+    return this.send("POST", `users/${userId}/wallets`, data);
   }
 
-  public async setDefaultWalletForUser(userId: string, walletId: string): Promise<IApiServiceResponse<void>>
+  public async setDefaultWalletForUser(walletId: string, userId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("PUT", `users/${userId}/wallets/default`, { id: walletId });
   }
