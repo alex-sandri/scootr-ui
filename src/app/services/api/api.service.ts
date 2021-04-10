@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 interface IApiServiceResponse<T>
 {
   status: number,
+  success: boolean,
   data?: T,
   errors?: {
     field: string,
@@ -55,6 +56,14 @@ export class ApiService
   constructor()
   {}
 
+  public SUCCESS_STATUS_CODES = {
+    GET: 200,
+    POST: 200,
+    PATCH: 200,
+    PUT: 200,
+    DELETE: 204,
+  };
+
   private async send(
     method: "DELETE" | "GET" | "PATCH" | "POST" | "PUT",
     url: string,
@@ -70,7 +79,10 @@ export class ApiService
       body: JSON.stringify(body),
     });
 
-    const result: IApiServiceResponse<any> = { status: response.status };
+    const result: IApiServiceResponse<any> = {
+      status: response.status,
+      success: response.status === this.SUCCESS_STATUS_CODES[method],
+    };
 
     // No Content
     if (result.status === 204)

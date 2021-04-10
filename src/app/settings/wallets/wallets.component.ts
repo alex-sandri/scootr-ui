@@ -38,7 +38,7 @@ export class WalletsComponent implements OnInit
 
     const response = await this.api.setDefaultWalletForUser(wallet.id, this.auth.user.id);
 
-    if (!response.errors)
+    if (response.success)
     {
       this.wallets.map(_ =>
       {
@@ -58,7 +58,7 @@ export class WalletsComponent implements OnInit
 
     const response = await this.api.deleteWallet(wallet.id);
 
-    if (!response.errors)
+    if (response.success)
     {
       this.wallets = this.wallets.filter(p => p.id !== wallet.id);
     }
