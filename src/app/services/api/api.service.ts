@@ -92,20 +92,6 @@ export class ApiService
     return result;
   }
 
-  /* -------
-  -- AUTH --
-  ------- */
-
-  public async retrieveSignInRequest(id: string): Promise<IApiServiceResponse<{ session: ISession }>>
-  {
-    return this.send("GET", `auth/email/requests/${id}`);
-  }
-
-  public async signInWithEmail(email: string): Promise<IApiServiceResponse<{ id: string }>>
-  {
-    return this.send("POST", "auth/email", { email });
-  }
-
   /* -----------
   -- SESSIONS --
   ----------- */
