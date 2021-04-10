@@ -17,6 +17,8 @@ import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
 import { WalletsComponent } from './settings/wallets/wallets.component';
 import { WalletComponent } from './settings/wallets/wallet/wallet.component';
+import { DangerButtonComponent } from './components/danger-button/danger-button.component';
+import { BadgeComponent } from './components/badge/badge.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -32,6 +34,8 @@ registerLocaleData(localeIt, "it");
     DetailsComponent,
     WalletsComponent,
     WalletComponent,
+    DangerButtonComponent,
+    BadgeComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,51 @@
-<p>wallets works!</p>
+<app-header theme="light"></app-header>
+
+<settings-menu section="details"></settings-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Portafogli</h1>
+        </div>
+        <div class="content">
+            <div *ngIf="!wallets">
+                <spinner></spinner>
+            </div>
+            <div *ngIf="wallets" class="list">
+                <div *ngIf="wallets.length === 0">
+                    <p>Non hai ancora creato nessun portafoglio</p>
+                </div>
+                <div
+                    *ngFor="let wallet of wallets"
+
+                    class="list-item-with-actions"
+                >
+                    <div>
+                        <badge
+                            *ngIf="wallet.is_default"
+
+                            text="Predefinito"
+                        >
+                        </badge>
+                        {{ wallet.name }}
+                    </div>
+                    <div class="actions">
+                        <button
+                            [disabled]="wallet.is_default"
+
+                            (click)="setDefaultWallet(wallet)"
+                        >
+                            Imposta come predefinito
+                        </button>
+                        <danger-button
+                            text="Elimina"
+                            alertText="Sei sicuro di voler eliminare il portafoglio '{{ wallet.name }}'"
+
+                            (confirm)="removeWallet(wallet)">
+                        </danger-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

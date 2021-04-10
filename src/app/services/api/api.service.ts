@@ -38,6 +38,15 @@ export interface IVehicle
   },
 }
 
+export interface IWallet
+{
+  id: string,
+  name: string,
+  balance: number,
+  is_default: boolean,
+  user: IUser,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -156,5 +165,24 @@ export class ApiService
   ): Promise<IApiServiceResponse<IVehicle[]>>
   {
     return this.send("GET", `vehicles?location[latitude]=${location.latitude}&location[longitude]=${location.longitude}&radius=${radius}`);
+  }
+
+  /* ----------
+  -- WALLETS --
+  ---------- */
+
+  public async listWalletsForUser(userId: string): Promise<IApiServiceResponse<IWallet[]>>
+  {
+    return this.send("GET", `users/${userId}/wallets`);
+  }
+
+  public async setDefaultWalletForUser(userId: string, walletId: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("PUT", `users/${userId}/wallets/default`, { id: walletId });
+  }
+
+  public async deleteWallet(walletId: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `wallets/${walletId}`);
   }
 }
