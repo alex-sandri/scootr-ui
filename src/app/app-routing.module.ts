@@ -4,6 +4,7 @@ import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { HomeComponent } from './home/home.component';
 import { ScanComponent } from './home/signed-in/scan/scan.component';
 import { DetailsComponent } from './settings/details/details.component';
+import { NewWalletComponent } from './settings/wallets/new/new.component';
 import { AddPaymentMethodComponent } from './settings/wallets/wallet/payment-methods/add/add.component';
 import { PaymentMethodsComponent } from './settings/wallets/wallet/payment-methods/payment-methods.component';
 import { WalletComponent } from './settings/wallets/wallet/wallet.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
       {
         path: "wallets",
         children: [
+          { path: "new", component: NewWalletComponent },
           {
             path: ":id",
             children: [

@@ -20,6 +20,7 @@ import { WalletComponent } from './settings/wallets/wallet/wallet.component';
 import { DangerButtonComponent } from './components/danger-button/danger-button.component';
 import { BadgeComponent } from './components/badge/badge.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { NewWalletComponent } from './settings/wallets/new/new.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -38,6 +39,7 @@ registerLocaleData(localeIt, "it");
     DangerButtonComponent,
     BadgeComponent,
     SpinnerComponent,
+    NewWalletComponent,
   ],
   imports: [
     BrowserModule,
