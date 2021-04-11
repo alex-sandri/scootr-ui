@@ -10,6 +10,9 @@ export const environment = {
   spid: {
     endpoint: "http://localhost:8099",
   },
+  stripe: {
+    key: "pk_test_51Ic4kwGdWrrPtBPn3lXc66hQOt6lJ3SXtQzt6fW6Uwq9ggyxGQTEFSppWo3aoZPIusK0qA2wuFRotlw2tguXMOaV00HO35N4KG",
+  },
 };
 
 /*

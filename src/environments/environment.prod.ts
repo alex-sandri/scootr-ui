@@ -6,4 +6,7 @@ export const environment = {
   spid: {
     endpoint: "TODO",
   },
+  stripe: {
+    key: "TODO",
+  },
 };

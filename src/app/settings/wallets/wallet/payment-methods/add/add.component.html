@@ -1,1 +1,23 @@
-<p>add works!</p>
+<app-header></app-header>
+
+<wallet-menu section="payment-methods"></wallet-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Aggiungi metodo di pagamento</h1>
+        </div>
+        <div class="content">
+            <form (submit)="onSubmit($event)">
+                <label>
+                    Carta
+                    <div id="card-element"></div>
+                    <div class="errors" *ngIf="cardElementError">
+                        <p>{{ cardElementError }}</p>
+                    </div>
+                </label>
+                <button type="submit">Aggiungi</button>
+            </form>
+        </div>
+    </section>
+</main>

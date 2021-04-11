@@ -43,7 +43,7 @@ export class PaymentMethodsComponent implements OnInit
 
     const response = await this.api.setDefaultPaymentMethodForWallet(paymentMethod.id, this.walletId);
 
-    if (!response.errors)
+    if (response.success)
     {
       this.paymentMethods.map(_ =>
       {
@@ -64,7 +64,7 @@ export class PaymentMethodsComponent implements OnInit
 
     const response = await this.api.deletePaymentMethod(paymentMethod.id);
 
-    if (!response.errors)
+    if (response.success)
     {
       this.paymentMethods = this.paymentMethods.filter(p => p.id !== paymentMethod.id);
     }
