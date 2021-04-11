@@ -1,1 +1,33 @@
-<p>add-funds works!</p>
+<app-header></app-header>
+
+<wallet-menu section="details"></wallet-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Ricarica il portafoglio</h1>
+        </div>
+        <div class="content">
+            <form [formGroup]="form" (submit)="onSubmit($event)">
+                <label>
+                    Importo
+                    <input
+                        formControlName="amount"
+
+                        type="number"
+                        name="amount"
+                        required
+                    >
+                    <div class="errors">
+                        <p *ngFor="let error of form.get('amount')?.errors?.errors">
+                            {{ error.error }}
+                        </p>
+                    </div>
+                </label>
+                <button type="submit">
+                    Conferma
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
