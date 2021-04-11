@@ -43,7 +43,7 @@ aside
     header
     {
         padding: 1rem;
-        margin-bottom: 1em;
+        margin-bottom: 1rem;
         background-color: rgba($primary-color, 0.1);
         border: 1px solid var(--primary-color);
         border-radius: 0.5rem;
@@ -184,8 +184,8 @@ form
     {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 1em;
-        margin-bottom: 1em;
+        gap: 1rem;
+        margin-bottom: 1rem;
 
         label
         {
@@ -296,7 +296,7 @@ section
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1em;
+        padding: 1rem;
         background-color: rgba($primary-color, 0.1);
         border-bottom: 1px solid var(--primary-color);
 
@@ -308,8 +308,8 @@ section
 
     .title:empty + .content > :first-child
     {
-        border-top-left-radius: 0.5em;
-        border-top-right-radius: 0.5em;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
     }
 
     .content
@@ -317,7 +317,7 @@ section
         > *
         {
             margin: 0;
-            padding: 1em;
+            padding: 1rem;
 
             &:not(:first-child)
             {
@@ -354,7 +354,7 @@ section
 
     & ~ &
     {
-        margin-top: 1em;
+        margin-top: 1rem;
     }
 }
 
