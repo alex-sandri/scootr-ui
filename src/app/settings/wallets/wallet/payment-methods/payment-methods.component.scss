@@ -1,1 +1,17 @@
+@import "~src/variables";
+
 @import "../../../settings";
+
+.list-item-with-actions
+{
+    > :first-child
+    {
+        border-radius: 0.5rem;
+    }
+}
+
+.brand
+{
+    font-weight: $semi-bold;
+    text-transform: uppercase;
+}
