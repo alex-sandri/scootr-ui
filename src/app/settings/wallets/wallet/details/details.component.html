@@ -30,14 +30,14 @@
             </form>
         </div>
     </section>
-    <section>
+    <section *ngIf="wallet">
         <div class="title">
             <h1>Saldo</h1>
-            <a routerLink="../add-funds" class="button">
+            <a routerLink="/settings/wallets/{{ wallet.id }}/add-funds" class="button">
                 Ricarica
             </a>
         </div>
-        <div *ngIf="wallet" class="content">
+        <div class="content">
             <span class="balance">
                 <b>{{ wallet.balance }}</b>
                 &euro;
