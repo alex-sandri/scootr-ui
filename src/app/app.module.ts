@@ -21,6 +21,7 @@ import { BadgeComponent } from './components/badge/badge.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NewWalletComponent } from './settings/wallets/new/new.component';
 import { WalletMenuComponent } from './settings/wallets/wallet/menu/menu.component';
+import { WalletDetailsComponent } from './settings/wallets/wallet/details/details.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -39,6 +40,7 @@ registerLocaleData(localeIt, "it");
     BadgeComponent,
     SpinnerComponent,
     NewWalletComponent,
+    WalletDetailsComponent,
     WalletMenuComponent,
   ],
   imports: [
