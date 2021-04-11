@@ -117,6 +117,34 @@ export class ApiService
     return result;
   }
 
+  /* ------------------
+  -- PAYMENT METHODS --
+  ------------------ */
+
+  public async listPaymentMethodsForWallet(walletId: string): Promise<IApiServiceResponse<IPaymentMethod[]>>
+  {
+    return this.send("GET", `wallets/${walletId}/payment-methods`);
+  }
+
+  public async addPaymentMethodToWallet(stripePaymentMethodId: string, walletId: string): Promise<IApiServiceResponse<IUser>>
+  {
+    return this.send("POST", `wallets/${walletId}/payment-methods`, {
+      id: stripePaymentMethodId,
+    });
+  }
+
+  public async setDefaultPaymentMethodForWallet(paymentMethodId: string, walletId: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("PUT", `wallet/${walletId}/payment-methods/default`, {
+      id: paymentMethodId,
+    });
+  }
+
+  public async deletePaymentMethod(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `payment-methods/${id}`);
+  }
+
   /* -----------
   -- SESSIONS --
   ----------- */
