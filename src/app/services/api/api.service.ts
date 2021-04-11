@@ -69,14 +69,6 @@ export class ApiService
   constructor()
   {}
 
-  public SUCCESS_STATUS_CODES = {
-    GET: 200,
-    POST: 200,
-    PATCH: 200,
-    PUT: 200,
-    DELETE: 204,
-  };
-
   private async send(
     method: "DELETE" | "GET" | "PATCH" | "POST" | "PUT",
     url: string,
@@ -94,7 +86,7 @@ export class ApiService
 
     const result: IApiServiceResponse<any> = {
       status: response.status,
-      success: response.status === this.SUCCESS_STATUS_CODES[method],
+      success: response.status >= 200 && response.status < 300,
     };
 
     // No Content
