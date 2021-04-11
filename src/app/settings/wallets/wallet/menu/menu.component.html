@@ -1,21 +1,21 @@
-<aside>
-    <header *ngIf="wallet">
+<aside *ngIf="wallet">
+    <header>
         <h1>{{ wallet.name }}</h1>
     </header>
     <section>
         <div class="title"></div>
         <div class="content">
             <a
-                routerLink="/settings/details"
+                routerLink="/settings/wallets/{{ wallet.id }}/details"
                 [class.selected]="section === 'details'"
             >
                 Dettagli
             </a>
             <a
-                routerLink="/settings/payment-methods"
+                routerLink="/settings/wallets/{{ wallet.id }}/payment-methods"
                 [class.selected]="section === 'payment-methods'"
             >
-                Avanzate
+                Metodi di pagamento
             </a>
         </div>
     </section>
