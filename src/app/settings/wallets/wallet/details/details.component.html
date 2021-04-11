@@ -33,15 +33,13 @@
     <section>
         <div class="title">
             <h1>Saldo</h1>
+            <button>Ricarica</button>
         </div>
         <div *ngIf="wallet" class="content">
-            <div>
-                <span class="balance">
-                    <b>{{ wallet.balance }}</b>
-                    &euro;
-                </span>
-                <button>Ricarica</button>
-            </div>
+            <span class="balance">
+                <b>{{ wallet.balance }}</b>
+                &euro;
+            </span>
         </div>
     </section>
 </main>
