@@ -1,1 +1,62 @@
-<p>payment-methods works!</p>
+<app-header></app-header>
+
+<wallet-menu section="payment-methods"></wallet-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Dettagli</h1>
+        </div>
+        <div class="content">
+            <div *ngIf="!paymentMethods">
+                <spinner></spinner>
+            </div>
+            <div *ngIf="paymentMethods" class="list">
+                <div *ngIf="paymentMethods.length === 0">
+                    <p>Non hai ancora aggiunto nessun metodo di pagamento</p>
+                </div>
+                <div
+                    *ngFor="let paymentMethod of paymentMethods"
+
+                    [ngSwitch]="paymentMethod.type"
+
+                    class="list-item-with-actions"
+                >
+                    <div *ngSwitchCase="'card'">
+                        <badge
+                            *ngIf="paymentMethod.is_default"
+
+                            text="Predefinito"
+                        >
+                        </badge>
+                        <p class="brand">{{ paymentMethod.data.brand }}</p>
+                        <p>
+                            {{ paymentMethod.data.exp_month.toString().padStart(2, "0") }}
+                            /
+                            {{ paymentMethod.data.exp_year }}
+                        </p>
+                        <p>
+                            &bull;&bull;&bull;&bull;
+                            {{ paymentMethod.data.last4 }}
+                        </p>
+                    </div>
+                    <div class="actions">
+                        <button
+                            [disabled]="paymentMethod.is_default"
+
+                            (click)="setDefaultPaymentMethod(paymentMethod)"
+                        >
+                            Imposta come predefinito
+                        </button>
+                        <danger-button
+                            text="Elimina"
+                            alertText="Sei sicuro di voler eliminare il metodo di pagamento '{{ paymentMethod.last4 }}'"
+
+                            (confirm)="removePaymentMethod(paymentMethod)">
+                        </danger-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
