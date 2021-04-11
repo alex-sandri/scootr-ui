@@ -186,6 +186,13 @@ export class ApiService
     return this.send("POST", `users/${userId}/wallets`, data);
   }
 
+  public async updateWallet(walletId: string, data: {
+    name?: string,
+  }): Promise<IApiServiceResponse<IWallet>>
+  {
+    return this.send("PATCH", `wallets/${walletId}`, data);
+  }
+
   public async setDefaultWalletForUser(walletId: string, userId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("PUT", `users/${userId}/wallets/default`, { id: walletId });

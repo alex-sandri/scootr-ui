@@ -47,7 +47,7 @@ export class WalletDetailsComponent implements OnInit
     }
 
     const response = await this.api.updateWallet(this.wallet.id, {
-      name: this.form.get("name")?.value ?? "",
+      name: this.form.get("name")?.value,
     });
 
     Object.entries(this.form.controls).forEach(([ name, control ]) =>
