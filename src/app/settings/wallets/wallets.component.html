@@ -23,7 +23,7 @@
 
                     class="list-item-with-actions"
                 >
-                    <div>
+                    <a routerLink="{{ wallet.id }}">
                         <badge
                             *ngIf="wallet.is_default"
 
@@ -31,7 +31,7 @@
                         >
                         </badge>
                         {{ wallet.name }}
-                    </div>
+                    </a>
                     <div class="actions">
                         <button
                             [disabled]="wallet.is_default"
