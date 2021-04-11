@@ -22,6 +22,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NewWalletComponent } from './settings/wallets/new/new.component';
 import { WalletMenuComponent } from './settings/wallets/wallet/menu/menu.component';
 import { WalletDetailsComponent } from './settings/wallets/wallet/details/details.component';
+import { PaymentMethodsComponent } from './settings/wallets/wallet/payment-methods/payment-methods.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -42,6 +43,7 @@ registerLocaleData(localeIt, "it");
     NewWalletComponent,
     WalletDetailsComponent,
     WalletMenuComponent,
+    PaymentMethodsComponent,
   ],
   imports: [
     BrowserModule,
