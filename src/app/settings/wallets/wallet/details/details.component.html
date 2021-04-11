@@ -30,4 +30,18 @@
             </form>
         </div>
     </section>
+    <section>
+        <div class="title">
+            <h1>Saldo</h1>
+        </div>
+        <div *ngIf="wallet" class="content">
+            <div>
+                <span class="balance">
+                    <b>{{ wallet.balance }}</b>
+                    &euro;
+                </span>
+                <button>Ricarica</button>
+            </div>
+        </div>
+    </section>
 </main>
