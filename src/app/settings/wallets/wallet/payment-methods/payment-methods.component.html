@@ -24,7 +24,7 @@
                 >
                     <div *ngSwitchCase="'card'">
                         <badge
-                            *ngIf="paymentMethod.is_default"
+                            *ngIf="paymentMethod.__metadata?.is_default"
 
                             text="Predefinito"
                         >
@@ -42,7 +42,7 @@
                     </div>
                     <div class="actions">
                         <button
-                            [disabled]="paymentMethod.is_default"
+                            [disabled]="paymentMethod.__metadata?.is_default"
 
                             (click)="setDefaultPaymentMethod(paymentMethod)"
                         >

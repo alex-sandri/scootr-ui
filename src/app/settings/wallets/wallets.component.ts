@@ -42,7 +42,8 @@ export class WalletsComponent implements OnInit
     {
       this.wallets.map(_ =>
       {
-        _.is_default = wallet.id === _.id;
+        _.__metadata ??= { is_default: false };
+        _.__metadata.is_default = wallet.id === _.id;
 
         return _;
       });

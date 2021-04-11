@@ -25,7 +25,7 @@
                 >
                     <a routerLink="{{ wallet.id }}">
                         <badge
-                            *ngIf="wallet.is_default"
+                            *ngIf="wallet.__metadata?.is_default"
 
                             text="Predefinito"
                         >
@@ -34,7 +34,7 @@
                     </a>
                     <div class="actions">
                         <button
-                            [disabled]="wallet.is_default"
+                            [disabled]="wallet.__metadata?.is_default"
 
                             (click)="setDefaultWallet(wallet)"
                         >
