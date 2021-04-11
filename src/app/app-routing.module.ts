@@ -5,9 +5,9 @@ import { HomeComponent } from './home/home.component';
 import { ScanComponent } from './home/signed-in/scan/scan.component';
 import { DetailsComponent } from './settings/details/details.component';
 import { NewWalletComponent } from './settings/wallets/new/new.component';
+import { WalletDetailsComponent } from './settings/wallets/wallet/details/details.component';
 import { AddPaymentMethodComponent } from './settings/wallets/wallet/payment-methods/add/add.component';
 import { PaymentMethodsComponent } from './settings/wallets/wallet/payment-methods/payment-methods.component';
-import { WalletComponent } from './settings/wallets/wallet/wallet.component';
 import { WalletsComponent } from './settings/wallets/wallets.component';
 
 const routes: Routes = [
@@ -24,6 +24,7 @@ const routes: Routes = [
           {
             path: ":id",
             children: [
+              { path: "details", component: WalletDetailsComponent },
               {
                 path: "payment-methods",
                 children: [
@@ -31,7 +32,7 @@ const routes: Routes = [
                   { path: "", component: PaymentMethodsComponent },
                 ],
               },
-              { path: "", component: WalletComponent },
+              { path: "", component: WalletDetailsComponent },
             ],
           },
           { path: "", component: WalletsComponent },

@@ -16,11 +16,11 @@ import { DetailsComponent } from './settings/details/details.component';
 import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
 import { WalletsComponent } from './settings/wallets/wallets.component';
-import { WalletComponent } from './settings/wallets/wallet/wallet.component';
 import { DangerButtonComponent } from './components/danger-button/danger-button.component';
 import { BadgeComponent } from './components/badge/badge.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NewWalletComponent } from './settings/wallets/new/new.component';
+import { WalletMenuComponent } from './settings/wallets/wallet/menu/menu.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -35,11 +35,11 @@ registerLocaleData(localeIt, "it");
     SettingsMenuComponent,
     DetailsComponent,
     WalletsComponent,
-    WalletComponent,
     DangerButtonComponent,
     BadgeComponent,
     SpinnerComponent,
     NewWalletComponent,
+    WalletMenuComponent,
   ],
   imports: [
     BrowserModule,
