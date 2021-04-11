@@ -33,7 +33,9 @@
     <section>
         <div class="title">
             <h1>Saldo</h1>
-            <button>Ricarica</button>
+            <a routerLink="add-funds" class="button">
+                Ricarica
+            </a>
         </div>
         <div *ngIf="wallet" class="content">
             <span class="balance">
