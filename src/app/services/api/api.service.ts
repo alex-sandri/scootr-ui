@@ -12,6 +12,17 @@ interface IApiServiceResponse<T>
   }[],
 }
 
+export interface IPaymentMethod
+{
+  id: string,
+  type: string,
+  data: any,
+  wallet: IWallet,
+  __metadata?: {
+    is_default: boolean,
+  },
+}
+
 export interface ISession
 {
   id: string,
@@ -44,8 +55,10 @@ export interface IWallet
   id: string,
   name: string,
   balance: number,
-  is_default: boolean,
   user: IUser,
+  __metadata?: {
+    is_default: boolean,
+  },
 }
 
 @Injectable({

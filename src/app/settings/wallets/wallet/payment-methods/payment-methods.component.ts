@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService, IPaymentMethod } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-payment-methods',
@@ -9,6 +9,8 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class PaymentMethodsComponent implements OnInit
 {
+  private walletId?: string;
+
   public paymentMethods?: IPaymentMethod[];
 
   constructor(private api: ApiService, private route: ActivatedRoute)
@@ -20,6 +22,8 @@ export class PaymentMethodsComponent implements OnInit
       .subscribe({
         next: params =>
         {
+          this.walletId = params.id;
+
           this.api
             .listPaymentMethodsForWallet(params.id)
             .then(response =>
@@ -32,18 +36,19 @@ export class PaymentMethodsComponent implements OnInit
 
   public async setDefaultPaymentMethod(paymentMethod: IPaymentMethod)
   {
-    if (!this.wallet || !this.paymentMethods)
+    if (!this.walletId || !this.paymentMethods)
     {
       return;
     }
 
-    const response = await this.api.setDefaultPaymentMethodForWallet(paymentMethod.id, this.wallet.id);
+    const response = await this.api.setDefaultPaymentMethodForWallet(paymentMethod.id, this.walletId);
 
     if (!response.errors)
     {
       this.paymentMethods.map(_ =>
       {
-        _.is_default = paymentMethod.id === _.id;
+        _.__metadata ??= { is_default: false };
+        _.__metadata.is_default = paymentMethod.id === _.id;
 
         return _;
       });
