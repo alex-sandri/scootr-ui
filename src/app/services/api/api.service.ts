@@ -127,7 +127,7 @@ export class ApiService
 
   public async setDefaultPaymentMethodForWallet(paymentMethodId: string, walletId: string): Promise<IApiServiceResponse<void>>
   {
-    return this.send("PUT", `wallet/${walletId}/payment-methods/default`, {
+    return this.send("PUT", `wallets/${walletId}/payment-methods/default`, {
       id: paymentMethodId,
     });
   }
