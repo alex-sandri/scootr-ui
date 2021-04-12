@@ -154,7 +154,7 @@ export class SignedInHomeComponent implements AfterViewInit
                 ],
                 {
                   icon: L.icon({
-                    iconUrl: "/assets/vehicles/scooter.svg",
+                    iconUrl: "/assets/vehicles/scooter.png",
                     iconSize: [ 25, 25 ],
                   }),
                 },
