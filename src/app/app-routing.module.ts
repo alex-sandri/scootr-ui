@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { HomeComponent } from './home/home.component';
 import { ScanComponent } from './home/signed-in/scan/scan.component';
+import { AdvancedComponent } from './settings/advanced/advanced.component';
 import { DetailsComponent } from './settings/details/details.component';
 import { NewWalletComponent } from './settings/wallets/new/new.component';
 import { AddFundsComponent } from './settings/wallets/wallet/add-funds/add-funds.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: "settings",
     canActivate: [ SignedInGuard ],
     children: [
+      { path: "advanced", component: AdvancedComponent },
       { path: "details", component: DetailsComponent },
       {
         path: "wallets",

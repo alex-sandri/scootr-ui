@@ -25,6 +25,7 @@ import { WalletDetailsComponent } from './settings/wallets/wallet/details/detail
 import { PaymentMethodsComponent } from './settings/wallets/wallet/payment-methods/payment-methods.component';
 import { AddPaymentMethodComponent } from './settings/wallets/wallet/payment-methods/add/add.component';
 import { AddFundsComponent } from './settings/wallets/wallet/add-funds/add-funds.component';
+import { AdvancedComponent } from './settings/advanced/advanced.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -48,6 +49,7 @@ registerLocaleData(localeIt, "it");
     PaymentMethodsComponent,
     AddPaymentMethodComponent,
     AddFundsComponent,
+    AdvancedComponent,
   ],
   imports: [
     BrowserModule,
