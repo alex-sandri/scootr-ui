@@ -14,6 +14,8 @@ export class AddFundsComponent implements OnInit
 {
   public walletId?: string;
 
+  public isLoading = false;
+
   private stripe: Stripe | null = null;
 
   public form = new FormGroup({
@@ -48,6 +50,8 @@ export class AddFundsComponent implements OnInit
       return;
     }
 
+    this.isLoading = true;
+
     const response = await this.api.addFundsToWallet(
       this.form.get("amount")?.value ?? 0,
       this.walletId,
@@ -75,5 +79,7 @@ export class AddFundsComponent implements OnInit
         relativeTo: this.route,
       });
     }
+
+    this.isLoading = false;
   }
 }
