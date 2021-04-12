@@ -211,28 +211,28 @@ label
         margin-top: 0.2rem;
     }
 
-    .errors
-    {
-        color: white;
-        background-color: var(--danger-color);
-        padding: 0.5em;
-        border-radius: 0.5rem;
-        margin-top: 0.5em;
-
-        p
-        {
-            margin: 0;
-        }
-
-        &:empty
-        {
-            display: none;
-        }
-    }
-
     & ~ label
     {
         margin-top: 1em;
+    }
+}
+
+.errors
+{
+    color: white;
+    background-color: var(--danger-color);
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    margin-top: 0.5em;
+
+    p
+    {
+        margin: 0;
+    }
+
+    &:empty
+    {
+        display: none;
     }
 }
 

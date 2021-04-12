@@ -27,6 +27,11 @@
                 <button type="submit">
                     Conferma
                 </button>
+                <div class="errors">
+                    <p *ngFor="let error of form.get('wallet')?.errors?.errors">
+                        {{ error.error }}
+                    </p>
+                </div>
             </form>
         </div>
     </section>

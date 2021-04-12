@@ -17,6 +17,7 @@ export class AddFundsComponent implements OnInit
   private stripe: Stripe | null = null;
 
   public form = new FormGroup({
+    wallet: new FormControl(),
     amount: new FormControl(),
   });
 
