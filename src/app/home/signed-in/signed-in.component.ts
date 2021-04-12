@@ -91,6 +91,7 @@ export class SignedInHomeComponent implements AfterViewInit
         zoom: 19,
         zoomControl: false,
       })
+      .on("viewreset", () => this.loadVehicles())
       .on("dragend", () => this.loadVehicles())
       .on("zoomend", () => this.loadVehicles());
 
