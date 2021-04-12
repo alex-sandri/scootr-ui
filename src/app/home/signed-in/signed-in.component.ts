@@ -10,6 +10,8 @@ import { ApiService, IVehicle } from 'src/app/services/api/api.service';
 })
 export class SignedInHomeComponent implements AfterViewInit
 {
+  private vehicles: IVehicle[] = [];
+
   private map?: L.Map;
   private markers?: L.MarkerClusterGroup;
 
@@ -139,10 +141,14 @@ export class SignedInHomeComponent implements AfterViewInit
 
     if (response.data)
     {
-      // Clear all previous markers to avoid duplicate ones
-      this.markers.clearLayers();
+      const newVehicles = response.data.filter(v =>
+      {
+        return !this.vehicles.find(_ => _.id === v.id);
+      });
 
-      for (const vehicle of response.data)
+      this.vehicles = [ ...this.vehicles, ...newVehicles ];
+
+      for (const vehicle of newVehicles)
       {
         this.markers
           .addLayer(
