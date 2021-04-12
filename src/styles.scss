@@ -132,6 +132,36 @@ button,
         background-color: var(--danger-color);
     }
 
+    &.loading
+    {
+        color: transparent;
+        position: relative;
+           
+        &::before
+        {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            margin-left: -10px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            border-top-color: black;
+            animation: spinner 0.6s linear infinite;
+        }
+
+        @keyframes spinner
+        {
+            to
+            {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
     &:focus
     {
         box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
