@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { loadStripe, Stripe } from '@stripe/stripe-js';
 import { ApiService } from 'src/app/services/api/api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-add-funds',
@@ -12,6 +14,8 @@ export class AddFundsComponent implements OnInit
 {
   public walletId?: string;
 
+  private stripe: Stripe | null = null;
+
   public form = new FormGroup({
     amount: new FormControl(),
   });
@@ -19,8 +23,12 @@ export class AddFundsComponent implements OnInit
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
-  public ngOnInit()
+  public async ngOnInit()
   {
+    this.stripe = await loadStripe(environment.stripe.key, {
+      locale: "it",
+    });
+
     this.route.params
       .subscribe({
         next: params =>
@@ -34,7 +42,7 @@ export class AddFundsComponent implements OnInit
   {
     e.preventDefault();
 
-    if (!this.walletId)
+    if (!this.stripe || !this.walletId)
     {
       return;
     }
@@ -51,8 +59,17 @@ export class AddFundsComponent implements OnInit
       });
     });
 
-    if (response.success)
+    if (response.data)
     {
+      const result = await this.stripe.confirmCardPayment(response.data.client_secret);
+
+      if (result.error)
+      {
+        console.log(result.error.message);
+
+        return;
+      }
+
       this.router.navigate([ ".." ], {
         relativeTo: this.route,
       });
