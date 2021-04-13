@@ -17,10 +17,13 @@
                 <img src="/assets/spid-icon.svg" alt="">
                 Entra con SPID
             </button>
-            <button>
+            <a
+                href="{{ env.spid.endpoint }}/signin.php?idp={{ env.cie.identityProviderId }}"
+                class="button"
+            >
                 <img src="/assets/cie-icon.svg" alt="">
                 Entra con CIE
-            </button>
+            </a>
         </div>
         <img src="/assets/environment.svg" alt="">
     </div>

@@ -3,6 +3,9 @@ export const environment = {
   api: {
     endpoint: "TODO",
   },
+  cie: {
+    identityProviderId: "xx_servizicie",
+  },
   spid: {
     endpoint: "TODO",
     identityProviders: [

@@ -7,6 +7,9 @@ export const environment = {
   api: {
     endpoint: "http://localhost:4000",
   },
+  cie: {
+    identityProviderId: "xx_servizicie_test",
+  },
   spid: {
     endpoint: "http://localhost:8099",
     identityProviders: [
