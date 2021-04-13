@@ -29,9 +29,9 @@
 <aside *ngIf="showSpidIdpList" (click)="onSpidIdpListClick($event)">
     <div class="spid-idp-list">
         <a
-            *ngFor="let spidIdentityProvider of spidIdentityProviders"
+            *ngFor="let spidIdentityProvider of env.spid.identityProviders"
 
-            href="{{ spidSignInEndpoint }}/signin.php?idp={{ spidIdentityProvider.id }}"
+            href="{{ env.spid.endpoint }}/signin.php?idp={{ spidIdentityProvider.id }}"
             title="Entra con {{ spidIdentityProvider.name }}"
             class="button fill"
         >
