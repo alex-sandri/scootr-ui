@@ -1,9 +1,17 @@
 <app-header></app-header>
 
 <main>
+    <div *ngIf="!hasCamera" class="no-camera-message">
+        <span>
+            Non è stato possibile rilevare una fotocamera con cui scansionare.
+            <br>
+            Se il tuo dispositivo è munito di fotocamera questo potrebbe essere
+            dovuto al mancato consenso per il suo utilizzo.
+            <br>
+            Controlla le impostazioni del tuo browser e accertati che l'accesso
+            alla fotocamera sia consentito.
+        </span>
+    </div>
     <video #video hidden></video>
     <canvas #canvas></canvas>
-    <div *ngIf="!hasCamera">
-        <p>TODO</p>
-    </div>
 </main>
