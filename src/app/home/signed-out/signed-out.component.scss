@@ -42,20 +42,26 @@ main
         transform: rotateY(180deg);
         padding-right: 1rem;
     }
-}
 
-#spid-button,
-#cie-button
-{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: white;
-    background-color: #0066cc;
-
-    img
+    .buttons
     {
-        height: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        button
+        {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+            background-color: #0066cc;
+
+            img
+            {
+                height: 1.5rem;
+            }
+        }
     }
 }
 
