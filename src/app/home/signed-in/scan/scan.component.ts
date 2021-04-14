@@ -166,4 +166,14 @@ export class ScanComponent implements AfterViewInit
       relativeTo: this.route,
     });
   }
+
+  public onWalletPickerClick(e: Event)
+  {
+    const target = e.target as HTMLElement;
+
+    if (target.className === "wallet-picker-container")
+    {
+      this.shouldShowWalletPicker = false;
+    }
+  }
 }
