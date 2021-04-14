@@ -45,6 +45,21 @@ export class SignedInHomeComponent implements AfterViewInit
     this.askForGeolocationPermission();
   }
 
+  public async endRide()
+  {
+    if (!this.activeRide)
+    {
+      return;
+    }
+
+    const response = await this.api.endRide(this.activeRide.id);
+
+    if (response.success)
+    {
+      this.activeRide = null;
+    }
+  }
+
   public setMapCenter(coords?: L.LatLngExpression)
   {
     if (!this.map)
