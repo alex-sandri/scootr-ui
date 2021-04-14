@@ -16,7 +16,7 @@
     <canvas #canvas></canvas>
 </main>
 
-<div class="wallet-picker-container">
+<div *ngIf="shouldShowWalletPicker" class="wallet-picker-container">
     <div class="wallet-picker">
         <h1>Scegli il portafoglio</h1>
         <spinner *ngIf="!wallets"></spinner>
