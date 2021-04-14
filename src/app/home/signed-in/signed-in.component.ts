@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as L from "leaflet";
 import "leaflet.markercluster";
+import { interval } from 'rxjs';
 import { ApiService, IRide, IVehicle } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -36,20 +37,9 @@ export class SignedInHomeComponent implements AfterViewInit
 
     this.loadVehicles();
 
+    this.retrieveActiveRide();
+
     this.askForGeolocationPermission();
-
-    if (!this.auth.user)
-    {
-      return;
-    }
-
-    this.api.retrieveActiveRide(this.auth.user.id).then(response =>
-    {
-      if (response.data)
-      {
-        this.activeRide = response.data;
-      }
-    });
   }
 
   public setMapCenter(coords?: L.LatLngExpression)
@@ -210,5 +200,28 @@ export class SignedInHomeComponent implements AfterViewInit
           );
       }
     }
+  }
+
+  private async retrieveActiveRide()
+  {
+    if (!this.auth.user)
+    {
+      return;
+    }
+
+    this.api.retrieveActiveRide(this.auth.user.id).then(response =>
+    {
+      if (response.data)
+      {
+        this.activeRide = response.data;
+
+        // TODO:
+        // Unsubscribe on ride end
+        interval(1000).subscribe(time =>
+        {
+          console.log(time);
+        });
+      }
+    });
   }
 }
