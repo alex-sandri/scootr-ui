@@ -21,9 +21,13 @@
         <h1>Scegli il portafoglio</h1>
         <spinner *ngIf="!wallets"></spinner>
         <div *ngIf="wallets" class="list">
-            <div *ngFor="let wallet of wallets">
+            <button
+                *ngFor="let wallet of wallets"
+
+                (click)="startRide(wallet)"
+            >
                 {{ wallet.name }}
-            </div>
+            </button>
         </div>
     </div>
 </div>

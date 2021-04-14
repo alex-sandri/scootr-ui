@@ -142,7 +142,7 @@ export class ScanComponent implements AfterViewInit
     this.wallets = response.data;
   }
 
-  private async startRide(wallet: string)
+  public async startRide(wallet: IWallet)
   {
     if (!this.selectedVehicle)
     {
@@ -151,7 +151,7 @@ export class ScanComponent implements AfterViewInit
 
     const response = await this.api.startRide({
       vehicle: this.selectedVehicle,
-      wallet,
+      wallet: wallet.id,
     });
 
     if (response.errors)
