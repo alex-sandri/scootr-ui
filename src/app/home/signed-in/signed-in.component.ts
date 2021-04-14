@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as L from "leaflet";
 import "leaflet.markercluster";
-import { ApiService, IVehicle } from 'src/app/services/api/api.service';
+import { ApiService, IRide, IVehicle } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'signed-in-home',
@@ -10,13 +10,15 @@ import { ApiService, IVehicle } from 'src/app/services/api/api.service';
 })
 export class SignedInHomeComponent implements AfterViewInit
 {
+  public activeRide: IRide | null = null;
+
   private vehicles: IVehicle[] = [];
 
   private map?: L.Map;
   private markers?: L.MarkerClusterGroup;
 
   // Rome, IT
-  public currentLocation: [ number, number ] = [ 41.9027835, 12.4963655 ];
+  public currentLocation: L.LatLngExpression = [ 41.9027835, 12.4963655 ];
 
   public canUseGeolocation = true;
   public hasGrantedGeolocationPermission = false;
@@ -35,7 +37,7 @@ export class SignedInHomeComponent implements AfterViewInit
     this.askForGeolocationPermission();
   }
 
-  public setMapCenter(coords?: [ number, number ])
+  public setMapCenter(coords?: L.LatLngExpression)
   {
     this.map?.setView(coords ?? this.currentLocation);
   }
