@@ -17,6 +17,7 @@ export class SignedInHomeComponent implements AfterViewInit
 
   private map?: L.Map;
   private markers?: L.MarkerClusterGroup;
+  private currentPositionMarker?: L.Marker;
 
   // Rome, IT
   public currentLocation: L.LatLngExpression = [ 41.9027835, 12.4963655 ];
@@ -53,7 +54,27 @@ export class SignedInHomeComponent implements AfterViewInit
 
   public setMapCenter(coords?: L.LatLngExpression)
   {
-    this.map?.setView(coords ?? this.currentLocation);
+    if (!this.map)
+    {
+      return;
+    }
+
+    this.map.setView(coords ?? this.currentLocation);
+
+    this.currentPositionMarker ??= L
+      .marker(
+        this.currentLocation,
+        {
+          icon: L.icon({
+            iconUrl: "/assets/marker-icon.png",
+            shadowUrl: "/assets/marker-shadow.png",
+            iconRetinaUrl: "/assets/marker-icon-2x.png",
+          }),
+        }
+      )
+      .addTo(this.map);
+
+    this.currentPositionMarker.setLatLng(this.currentLocation);
   }
 
   public async searchPlace(query: string)
