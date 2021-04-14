@@ -210,24 +210,25 @@ export class SignedInHomeComponent implements AfterViewInit
       return;
     }
 
-    this.api.retrieveActiveRide(this.auth.user.id).then(response =>
+    const { data } = await this.api.retrieveActiveRide(this.auth.user.id);
+
+    if (!data)
     {
-      if (response.data)
+      return;
+    }
+
+    this.activeRide = data;
+
+    const intervalSubscription = interval(1000).subscribe(() =>
+    {
+      if (!this.activeRide)
       {
-        this.activeRide = response.data;
+        intervalSubscription.unsubscribe();
 
-        const intervalSubscription = interval(1000).subscribe(() =>
-        {
-          if (!this.activeRide)
-          {
-            intervalSubscription.unsubscribe();
-
-            return;
-          }
-
-          console.log(differenceInSeconds(new Date(), new Date(this.activeRide.start_time)));
-        });
+        return;
       }
+
+      console.log(differenceInSeconds(new Date(), new Date(this.activeRide.start_time)));
     });
   }
 }
