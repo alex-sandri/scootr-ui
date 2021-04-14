@@ -7,7 +7,7 @@
     <div *ngIf="!hasGrantedGeolocationPermission" class="map-msg">
         <span>Per poter vedere i mezzi nelle tue vicinanze è necessario permettere l'accesso alla tua posizione attuale</span>
     </div>
-    <div *ngIf="activeRide || true" class="active-ride-info">
+    <div *ngIf="activeRide" class="active-ride-info">
         <b>Corsa attiva</b>
         <br>
         <span class="time">00:00</span>
@@ -19,7 +19,7 @@
 
 <footer>
     <button
-        *ngIf="activeRide || true"
+        *ngIf="activeRide"
 
         title="Termina corsa"
         class="danger"
@@ -27,7 +27,7 @@
         <span class="mat-icon">stop</span>
     </button>
     <a
-        *ngIf="!activeRide && false"
+        *ngIf="!activeRide"
 
         routerLink="scan"
 
