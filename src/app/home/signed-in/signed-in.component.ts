@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { differenceInSeconds } from 'date-fns';
+import { differenceInMinutes, differenceInSeconds } from 'date-fns';
 import * as L from "leaflet";
 import "leaflet.markercluster";
 import { interval } from 'rxjs';
@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class SignedInHomeComponent implements AfterViewInit
 {
   public activeRide: IRide | null = null;
+  public activeRideTimeString: string = "00:00";
 
   private vehicles: IVehicle[] = [];
 
@@ -228,7 +229,12 @@ export class SignedInHomeComponent implements AfterViewInit
         return;
       }
 
-      console.log(differenceInSeconds(new Date(), new Date(this.activeRide.start_time)));
+      const difference = differenceInSeconds(new Date(), new Date(this.activeRide.start_time));
+
+      const minutes = Math.floor(difference / 60);
+      const seconds = difference % 60;
+
+      this.activeRideTimeString = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
     });
   }
 }
