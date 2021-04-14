@@ -2,6 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import * as L from "leaflet";
 import "leaflet.markercluster";
 import { ApiService, IRide, IVehicle } from 'src/app/services/api/api.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'signed-in-home',
@@ -23,7 +24,7 @@ export class SignedInHomeComponent implements AfterViewInit
   public canUseGeolocation = true;
   public hasGrantedGeolocationPermission = false;
 
-  constructor(private api: ApiService)
+  constructor(private api: ApiService, private auth: AuthService)
   {}
 
   public ngAfterViewInit()
@@ -35,6 +36,19 @@ export class SignedInHomeComponent implements AfterViewInit
     this.loadVehicles();
 
     this.askForGeolocationPermission();
+
+    if (!this.auth.user)
+    {
+      return;
+    }
+
+    this.api.retrieveActiveRide(this.auth.user.id).then(response =>
+    {
+      if (response.data)
+      {
+        this.activeRide = response.data;
+      }
+    });
   }
 
   public setMapCenter(coords?: L.LatLngExpression)
