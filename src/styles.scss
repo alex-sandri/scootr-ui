@@ -136,7 +136,7 @@ button,
     {
         color: transparent;
         position: relative;
-           
+
         &::before
         {
             content: "";
@@ -244,6 +244,18 @@ label
     & ~ label
     {
         margin-top: 1em;
+    }
+
+    &.checkbox
+    {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+
+        input[type=checkbox]
+        {
+            width: max-content;
+        }
     }
 }
 
