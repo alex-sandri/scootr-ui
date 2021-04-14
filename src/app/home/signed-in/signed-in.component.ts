@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { differenceInSeconds } from 'date-fns';
 import * as L from "leaflet";
 import "leaflet.markercluster";
 import { interval } from 'rxjs';
@@ -215,11 +216,16 @@ export class SignedInHomeComponent implements AfterViewInit
       {
         this.activeRide = response.data;
 
-        // TODO:
-        // Unsubscribe on ride end
-        interval(1000).subscribe(time =>
+        const intervalSubscription = interval(1000).subscribe(() =>
         {
-          console.log(time);
+          if (!this.activeRide)
+          {
+            intervalSubscription.unsubscribe();
+
+            return;
+          }
+
+          console.log(differenceInSeconds(new Date(), new Date(this.activeRide.start_time)));
         });
       }
     });
