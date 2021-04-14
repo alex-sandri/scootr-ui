@@ -8,11 +8,11 @@
         <span>Per poter vedere i mezzi nelle tue vicinanze è necessario permettere l'accesso alla tua posizione attuale</span>
     </div>
     <div *ngIf="activeRide" class="active-ride-info">
-        <b>Corsa attiva</b>
+        <span>Corsa attiva</span>
         <br>
         <span class="time">{{ activeRideTimeString }}</span>
         <br>
-        <span class="estimated-cost">{{ activeRideEstimatedCost | currency:"EUR"}}</span>
+        <b class="estimated-cost">{{ activeRideEstimatedCost | currency:"EUR"}}</b>
         <small class="disclaimer">
             <i>Questi dati sono approssimativi e non rispecchiano necessariamente la realtà</i>
         </small>
