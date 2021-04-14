@@ -8,18 +8,32 @@
         <span>Per poter vedere i mezzi nelle tue vicinanze è necessario permettere l'accesso alla tua posizione attuale</span>
     </div>
     <div *ngIf="activeRide || true" class="active-ride-info">
-        <b class="time">
-            00:00
-        </b>
-        <small class="estimated-cost">
-            1,20 €
-        </small>
+        <b>Corsa attiva</b>
+        <br>
+        <span class="time">00:00</span>
+        <br>
+        <span class="estimated-cost">1,20 €</span>
     </div>
     <div id="map"></div>
 </main>
 
 <footer>
-    <a routerLink="scan" title="Scansiona codice QR" class="button dark">
+    <button
+        *ngIf="activeRide || true"
+
+        title="Termina corsa"
+        class="danger"
+    >
+        <span class="mat-icon">stop</span>
+    </button>
+    <a
+        *ngIf="!activeRide && false"
+
+        routerLink="scan"
+
+        title="Scansiona codice QR"
+        class="button dark"
+    >
         <span class="mat-icon">qr_code_scanner</span>
     </a>
     <button title="Vai alla posizione attuale" class="dark" (click)="setMapCenter()">

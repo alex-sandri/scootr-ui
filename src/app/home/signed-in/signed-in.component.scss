@@ -1,3 +1,5 @@
+@import "~src/variables";
+
 :host
 {
     display: grid;
@@ -25,6 +27,27 @@ footer
     padding: 1rem;
     max-width: 30ch;
     border-radius: 0.5rem;
+}
+
+.active-ride-info
+{
+    color: black;
+    background-color: white;
+    padding: 1rem;
+    margin-top: 1rem;
+    width: max-content;
+    border-radius: 0.5rem;
+
+    .time
+    {
+        font-size: 3rem;
+        font-weight: $black;
+    }
+
+    .estimated-cost
+    {
+        display: block;
+    }
 }
 
 #map
