@@ -44,9 +44,15 @@ footer
         font-weight: $black;
     }
 
-    .estimated-cost
+    .estimated-cost,
+    .disclaimer
     {
         display: block;
+    }
+
+    .disclaimer
+    {
+        margin-top: 1rem;
     }
 }
 
