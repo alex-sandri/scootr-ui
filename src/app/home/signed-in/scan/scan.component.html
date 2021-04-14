@@ -19,9 +19,10 @@
 <div class="wallet-picker-container">
     <div class="wallet-picker">
         <h1>Scegli il portafoglio</h1>
-        <div class="list">
-            <div>
-                TODO
+        <spinner *ngIf="!wallets"></spinner>
+        <div *ngIf="wallets" class="list">
+            <div *ngFor="let wallet of wallets">
+                {{ wallet.name }}
             </div>
         </div>
     </div>
