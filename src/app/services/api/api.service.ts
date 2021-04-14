@@ -12,6 +12,12 @@ interface IApiServiceResponse<T>
   }[],
 }
 
+interface ILocation
+{
+  latitude: number,
+  longitude: number,
+}
+
 export interface IPaymentMethod
 {
   id: string,
@@ -21,6 +27,19 @@ export interface IPaymentMethod
   __metadata?: {
     is_default: boolean,
   },
+}
+
+export interface IRide
+{
+  id: string,
+  user: IUser,
+  vehicle: IVehicle,
+  wallet: IWallet,
+  start_time: string,
+  end_time: string | null,
+  start_location: ILocation,
+  end_location: ILocation | null,
+  amount: number | null,
 }
 
 export interface ISession
@@ -44,10 +63,7 @@ export interface IVehicle
 {
   id: string,
   battery_level: number,
-  location: {
-    latitude: number,
-    longitude: number,
-  },
+  location: ILocation,
 }
 
 export interface IWallet
@@ -135,6 +151,28 @@ export class ApiService
   public async deletePaymentMethod(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `payment-methods/${id}`);
+  }
+
+  /* --------
+  -- RIDES --
+  -------- */
+
+  public async retrieveRide(id: string): Promise<IApiServiceResponse<IRide>>
+  {
+    return this.send("GET", `rides/${id}`);
+  }
+
+  public async startRide(data: {
+    vehicle: string,
+    wallet: string,
+  }): Promise<IApiServiceResponse<IRide>>
+  {
+    return this.send("POST", "rides", data);
+  }
+
+  public async endRide(id: string): Promise<IApiServiceResponse<IRide>>
+  {
+    return this.send("POST", `rides/${id}/end`);
   }
 
   /* -----------
