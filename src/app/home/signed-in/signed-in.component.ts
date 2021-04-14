@@ -14,7 +14,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class SignedInHomeComponent implements AfterViewInit
 {
   public activeRide: IRide | null = null;
-  public activeRideTimeString: string = "00:00";
+  public activeRideTimeString = "00:00";
+  public activeRideEstimatedCost = 0;
 
   private vehicles: IVehicle[] = [];
 
@@ -235,6 +236,7 @@ export class SignedInHomeComponent implements AfterViewInit
       const seconds = difference % 60;
 
       this.activeRideTimeString = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+      this.activeRideEstimatedCost = 1 + (0.2 * minutes);
     });
   }
 }

@@ -12,7 +12,7 @@
         <br>
         <span class="time">{{ activeRideTimeString }}</span>
         <br>
-        <span class="estimated-cost">1,20 €</span>
+        <span class="estimated-cost">{{ activeRideEstimatedCost | currency:"EUR"}}</span>
         <small>
             <i>Questi dati sono approssimativi e non rispecchiano necessariamente la realtà</i>
         </small>
