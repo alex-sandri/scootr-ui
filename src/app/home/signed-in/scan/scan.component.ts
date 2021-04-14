@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import jsQR from 'jsqr';
 import { Point } from 'jsqr/dist/locator';
 import { ApiService } from 'src/app/services/api/api.service';
@@ -20,7 +21,7 @@ export class ScanComponent implements AfterViewInit
 
   public hasCamera = true;
 
-  constructor(private api: ApiService)
+  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
   public async ngAfterViewInit()
@@ -137,7 +138,8 @@ export class ScanComponent implements AfterViewInit
       return;
     }
 
-    // TODO:
-    // Redirect to map page and show ride UI and controls
+    this.router.navigate([ ".." ], {
+      relativeTo: this.route,
+    });
   }
 }
