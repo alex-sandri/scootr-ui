@@ -24,9 +24,13 @@
             <button
                 *ngFor="let wallet of wallets"
 
+                class="fill"
+
                 (click)="startRide(wallet)"
             >
                 {{ wallet.name }}
+                <br>
+                <small>{{ wallet.balance }}€</small>
             </button>
         </div>
     </div>
