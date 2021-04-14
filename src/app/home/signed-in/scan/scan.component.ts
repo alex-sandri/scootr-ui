@@ -2,7 +2,8 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import jsQR from 'jsqr';
 import { Point } from 'jsqr/dist/locator';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService, IWallet } from 'src/app/services/api/api.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-scan',
@@ -21,7 +22,12 @@ export class ScanComponent implements AfterViewInit
 
   public hasCamera = true;
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
+  private selectedVehicle?: string;
+
+  public shouldShowWalletPicker = false;
+  public wallets?: IWallet[];
+
+  constructor(private api: ApiService, private auth: AuthService, private router: Router, private route: ActivatedRoute)
   {}
 
   public async ngAfterViewInit()
@@ -113,21 +119,39 @@ export class ScanComponent implements AfterViewInit
         this.drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
         this.drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
 
-        this.startRide(code.data);
+        this.selectedVehicle = code.data;
+
+        this.showWalletPicker();
       }
     }
 
     requestAnimationFrame(() => this.tick());
   }
 
-  private async startRide(vehicle: string)
+  private async showWalletPicker()
   {
-    // TODO:
-    // Show wallet picker
+    if (!this.auth.user)
+    {
+      return;
+    }
+
+    this.shouldShowWalletPicker = true;
+
+    const response = await this.api.listWalletsForUser(this.auth.user.id);
+
+    this.wallets = response.data;
+  }
+
+  private async startRide(wallet: string)
+  {
+    if (!this.selectedVehicle)
+    {
+      return;
+    }
 
     const response = await this.api.startRide({
-      vehicle,
-      wallet: "TODO",
+      vehicle: this.selectedVehicle,
+      wallet,
     });
 
     if (response.errors)
