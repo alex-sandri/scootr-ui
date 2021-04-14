@@ -162,6 +162,11 @@ export class ApiService
     return this.send("GET", `rides/${id}`);
   }
 
+  public async retrieveActiveRide(userId: string): Promise<IApiServiceResponse<IRide | null>>
+  {
+    return this.send("GET", `users/${userId}/rides/active`);
+  }
+
   public async startRide(data: {
     vehicle: string,
     wallet: string,
