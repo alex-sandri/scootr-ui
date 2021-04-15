@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'danger-button',
   templateUrl: './danger-button.component.html',
   styleUrls: ['./danger-button.component.scss']
 })
-export class DangerButtonComponent
+export class DangerButtonComponent implements OnInit
 {
   @Input()
   public text: string = "";
@@ -16,19 +16,27 @@ export class DangerButtonComponent
   @Output()
   public confirm = new EventEmitter<void>();
 
+  public dialogButtons = [
+    {
+      text: this.text,
+      classes: [ "dark", "danger" ],
+      onClick: () => this.onConfirm(),
+    },
+    {
+      text: "Annulla",
+      classes: [ "dark" ],
+      onClick: () => this.showConfirmDialog = false,
+    },
+  ];
   public showConfirmDialog = false;
 
   constructor()
   {}
 
-  public onDialogContainerClick(e: Event)
+  public ngOnInit()
   {
-    const target = e.target as HTMLElement;
-
-    if (target.className === "dialog-container")
-    {
-      this.showConfirmDialog = false;
-    }
+    // The actual input value is not set when constructing the component
+    this.dialogButtons[0].text = this.text;
   }
 
   public onConfirm()
