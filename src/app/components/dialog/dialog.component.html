@@ -1,0 +1,16 @@
+<div class="dialog-container" (click)="onDialogContainerClick($event)">
+    <div class="dialog">
+        <span class="message">{{ message }}</span>
+        <div class="actions">
+            <button
+                *ngFor="let button of buttons"
+
+                [class]="button.classes.join(' ')"
+
+                (click)="button.onClick()"
+            >
+                {{ button.text }}
+            </button>
+        </div>
+    </div>
+</div>
