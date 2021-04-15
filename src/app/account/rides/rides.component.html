@@ -8,7 +8,19 @@
             <h1>Corse</h1>
         </div>
         <div class="content">
-            
+            <div *ngIf="!rides">
+                <spinner></spinner>
+            </div>
+            <div *ngIf="rides" class="list">
+                <div *ngIf="rides.length === 0">
+                    <p>Non hai ancora fatto nessuna corsa</p>
+                </div>
+                <div *ngFor="let ride of rides">
+                    <a routerLink="{{ ride.id }}">
+                        {{ ride.id }}
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 </main>
