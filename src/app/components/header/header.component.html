@@ -21,6 +21,9 @@
 </header>
 
 <nav *ngIf="showNav">
+    <a routerLink="/account" class="button" [class.dark]="theme === 'light'">
+        Account
+    </a>
     <a routerLink="/settings" class="button" [class.dark]="theme === 'light'">
         Impostazioni
     </a>
