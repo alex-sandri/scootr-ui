@@ -37,8 +37,6 @@ export interface IRide
   wallet: IWallet,
   start_time: string,
   end_time: string | null,
-  start_location: ILocation,
-  end_location: ILocation | null,
   amount: number | null,
 }
 
