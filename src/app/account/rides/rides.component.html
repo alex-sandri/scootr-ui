@@ -17,7 +17,16 @@
                 </div>
                 <div *ngFor="let ride of rides">
                     <a routerLink="{{ ride.id }}">
-                        {{ ride }}
+                        {{ ride.start_time | date:"medium" }}
+                        <br>
+                        {{ ride.end_time | date:"medium" }}
+                        <br>
+                        <span *ngIf="!ride.amount">
+                            <i>In corso</i>
+                        </span>
+                        <span *ngIf="ride.amount">
+                            {{ ride.amount | currency:"EUR" }}
+                        </span>
                     </a>
                 </div>
             </div>
