@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RidesComponent } from './account/rides/rides.component';
 import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { HomeComponent } from './home/home.component';
 import { ScanComponent } from './home/signed-in/scan/scan.component';
@@ -13,6 +14,27 @@ import { PaymentMethodsComponent } from './settings/wallets/wallet/payment-metho
 import { WalletsComponent } from './settings/wallets/wallets.component';
 
 const routes: Routes = [
+  {
+    path: "account",
+    canActivate: [ SignedInGuard ],
+    children: [
+      {
+        path: "rides",
+        children: [
+          {
+            path: ":id",
+            children: [
+              // TODO
+              { path: "details", component: RidesComponent },
+              { path: "", component: RidesComponent },
+            ],
+          },
+          { path: "", component: RidesComponent },
+        ],
+      },
+      { path: "", component: RidesComponent },
+    ],
+  },
   { path: "scan", component: ScanComponent, canActivate: [ SignedInGuard ] },
   {
     path: "settings",
