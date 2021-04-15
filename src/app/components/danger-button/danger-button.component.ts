@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IDialogButton } from '../dialog/dialog.component';
 
 @Component({
   selector: 'danger-button',
@@ -16,7 +17,7 @@ export class DangerButtonComponent implements OnInit
   @Output()
   public confirm = new EventEmitter<void>();
 
-  public dialogButtons = [
+  public dialogButtons: IDialogButton[] = [
     {
       text: this.text,
       classes: [ "dark", "danger" ],

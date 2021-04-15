@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import jsQR from 'jsqr';
 import { Point } from 'jsqr/dist/locator';
+import { IDialogButton } from 'src/app/components/dialog/dialog.component';
 import { ApiService, IWallet } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -26,6 +27,10 @@ export class ScanComponent implements AfterViewInit
 
   public shouldShowWalletPicker = false;
   public wallets?: IWallet[];
+
+  public showDialog = false;
+  public dialogMessage = "";
+  public dialogButtons: IDialogButton[] = [];
 
   constructor(private api: ApiService, private auth: AuthService, private router: Router, private route: ActivatedRoute)
   {}
@@ -156,8 +161,15 @@ export class ScanComponent implements AfterViewInit
 
     if (response.errors)
     {
-      // TODO:
-      // Show error messages
+      this.showDialog = true;
+      this.dialogMessage = response.errors[0].error;
+      this.dialogButtons = [
+        {
+          text: "OK",
+          classes: [ "dark" ],
+          onClick: () => this.showDialog = false,
+        },
+      ];
 
       return;
     }

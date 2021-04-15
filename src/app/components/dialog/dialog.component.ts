@@ -1,5 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+export interface IDialogButton
+{
+  text: string,
+  classes: string[],
+  onClick: () => void,
+}
+
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -11,11 +18,7 @@ export class DialogComponent
   public message: string = "";
 
   @Input()
-  public buttons: {
-    text: string,
-    classes: string[],
-    onClick: () => void,
-  }[] = [];
+  public buttons: IDialogButton[] = [];
 
   @Output()
   public hide = new EventEmitter<void>();
