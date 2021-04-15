@@ -13,6 +13,8 @@ export class AddPaymentMethodComponent
 {
   private walletId?: string;
 
+  public isLoading = false;
+
   private stripe: Stripe | null = null;
 
   private cardElement?: StripeCardElement;
@@ -60,6 +62,8 @@ export class AddPaymentMethodComponent
       return;
     }
 
+    this.isLoading = true;
+
     const result = await this.stripe
       .createPaymentMethod({
         type: "card",
@@ -68,6 +72,8 @@ export class AddPaymentMethodComponent
 
     if (result.error)
     {
+      this.isLoading = false;
+
       return;
     }
 
@@ -79,5 +85,7 @@ export class AddPaymentMethodComponent
         relativeTo: this.route,
       });
     }
+
+    this.isLoading = false;
   }
 }

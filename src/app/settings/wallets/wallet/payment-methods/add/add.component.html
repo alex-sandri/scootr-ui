@@ -16,7 +16,9 @@
                         <p>{{ cardElementError }}</p>
                     </div>
                 </label>
-                <button type="submit">Aggiungi</button>
+                <button type="submit" [class.loading]="isLoading" [disabled]="isLoading">
+                    Aggiungi
+                </button>
             </form>
         </div>
     </section>
