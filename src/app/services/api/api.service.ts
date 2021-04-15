@@ -262,9 +262,12 @@ export class ApiService
     return this.send("POST", `users/${userId}/wallets`, data);
   }
 
-  public async addFundsToWallet(amount: number, walletId: string): Promise<IApiServiceResponse<{ client_secret: string }>>
+  public async addFundsToWallet(walletId: string, data: {
+    amount: number,
+    is_subscription: boolean,
+  }): Promise<IApiServiceResponse<{ client_secret: string }>>
   {
-    return this.send("POST", `wallets/${walletId}/funds`, { amount });
+    return this.send("POST", `wallets/${walletId}/funds`, data);
   }
 
   public async updateWallet(walletId: string, data: {

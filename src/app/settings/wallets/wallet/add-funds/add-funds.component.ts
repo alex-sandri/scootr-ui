@@ -21,6 +21,7 @@ export class AddFundsComponent implements OnInit
   public form = new FormGroup({
     wallet: new FormControl(),
     amount: new FormControl(),
+    is_subscription: new FormControl(false),
   });
 
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
@@ -52,10 +53,10 @@ export class AddFundsComponent implements OnInit
 
     this.isLoading = true;
 
-    const response = await this.api.addFundsToWallet(
-      this.form.get("amount")?.value ?? 0,
-      this.walletId,
-    );
+    const response = await this.api.addFundsToWallet(this.walletId, {
+      amount: this.form.get("amount")?.value ?? 0,
+      is_subscription: this.form.get("is_subscription")?.value ?? false,
+    });
 
     Object.entries(this.form.controls).forEach(([ name, control ]) =>
     {
