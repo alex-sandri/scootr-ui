@@ -15,20 +15,23 @@
                 <div *ngIf="rides.length === 0">
                     <p>Non hai ancora fatto nessuna corsa</p>
                 </div>
-                <div *ngFor="let ride of rides">
-                    <a routerLink="{{ ride.id }}">
-                        {{ ride.start_time | date:"medium" }}
-                        <br>
-                        {{ ride.end_time | date:"medium" }}
-                        <br>
-                        <span *ngIf="!ride.amount">
-                            <i>In corso</i>
-                        </span>
-                        <span *ngIf="ride.amount">
-                            {{ ride.amount | currency:"EUR" }}
-                        </span>
-                    </a>
-                </div>
+                <a *ngFor="let ride of rides" routerLink="{{ ride.id }}">
+                    <p>
+                        Iniziata
+                        <span>{{ ride.start_time | date:"medium" }}</span>
+                    </p>
+                    <p>
+                        Conclusa
+                        <span>{{ ride.end_time | date:"medium" }}</span>
+                    </p>
+                    <p *ngIf="!ride.amount">
+                        <i>In corso</i>
+                    </p>
+                    <p *ngIf="ride.amount">
+                        Costo
+                        <span>{{ ride.amount | currency:"EUR" }}</span>
+                    </p>
+                </a>
             </div>
         </div>
     </section>
