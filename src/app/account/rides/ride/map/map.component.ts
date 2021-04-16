@@ -1,51 +1,56 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as L from "leaflet";
-import { ApiService, IRideWaypoint } from 'src/app/services/api/api.service';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-ride-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class RideMapComponent implements OnInit, AfterViewInit
+export class RideMapComponent implements AfterViewInit
 {
-  public waypoints?: IRideWaypoint[];
-
   private map?: L.Map;
-
-  // Rome, IT
-  public currentLocation: L.LatLngExpression = [ 41.9027835, 12.4963655 ];
 
   constructor(private api: ApiService, private route: ActivatedRoute)
   {}
 
-  public ngOnInit()
+  public ngAfterViewInit()
   {
     this.route.params.subscribe({
       next: async params =>
       {
+        if (!this.map)
+        {
+          this.map = L.map("map");
+
+          L
+            .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              maxZoom: 19,
+              minZoom: 12,
+              attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
+            })
+            .addTo(this.map);
+        }
+
         const response = await this.api.listWaypointsForRide(params.id);
 
-        this.waypoints = response.data;
+        if (!response.data)
+        {
+          return;
+        }
+
+        const polyline = L
+          .polyline(
+            response.data.map(_ => [ _.location.latitude, _.location.longitude ]),
+            {
+              color: "red",
+            },
+          )
+          .addTo(this.map);
+
+        this.map.fitBounds(polyline.getBounds());
       },
     });
-  }
-
-  public ngAfterViewInit()
-  {
-    this.map = L
-      .map("map", {
-        zoom: 19,
-        center: this.currentLocation,
-      });
-
-    L
-      .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        minZoom: 12,
-        attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
-      })
-      .addTo(this.map);
   }
 }
