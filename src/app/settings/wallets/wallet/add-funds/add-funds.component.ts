@@ -53,9 +53,11 @@ export class AddFundsComponent implements OnInit
 
     this.isLoading = true;
 
+    const isSubscription = this.form.get("is_subscription")?.value ?? false;
+
     const response = await this.api.addFundsToWallet(this.walletId, {
       amount: this.form.get("amount")?.value ?? 0,
-      is_subscription: this.form.get("is_subscription")?.value ?? false,
+      is_subscription: isSubscription,
     });
 
     Object.entries(this.form.controls).forEach(([ name, control ]) =>
@@ -65,7 +67,7 @@ export class AddFundsComponent implements OnInit
       });
     });
 
-    if (response.data)
+    if (!isSubscription && response.data)
     {
       const result = await this.stripe.confirmCardPayment(response.data.client_secret);
 
@@ -80,6 +82,10 @@ export class AddFundsComponent implements OnInit
         relativeTo: this.route,
       });
     }
+
+    this.router.navigate([ ".." ], {
+      relativeTo: this.route,
+    });
 
     this.isLoading = false;
   }
