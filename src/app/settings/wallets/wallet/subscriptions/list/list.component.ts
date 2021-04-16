@@ -6,7 +6,7 @@ import { ISubscription } from 'src/app/services/api/api.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent
+export class SubscriptionListComponent
 {
   @Input()
   public subscriptions?: ISubscription[];
