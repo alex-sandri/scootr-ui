@@ -13,6 +13,8 @@ import { AddFundsComponent } from './settings/wallets/wallet/add-funds/add-funds
 import { WalletDetailsComponent } from './settings/wallets/wallet/details/details.component';
 import { AddPaymentMethodComponent } from './settings/wallets/wallet/payment-methods/add/add.component';
 import { PaymentMethodsComponent } from './settings/wallets/wallet/payment-methods/payment-methods.component';
+import { SubscriptionsComponent } from './settings/wallets/wallet/subscriptions/subscriptions.component';
+import { TransactionsComponent } from './settings/wallets/wallet/transactions/transactions.component';
 import { WalletsComponent } from './settings/wallets/wallets.component';
 
 const routes: Routes = [
@@ -60,6 +62,8 @@ const routes: Routes = [
                   { path: "", component: PaymentMethodsComponent },
                 ],
               },
+              { path: "subscriptions", component: SubscriptionsComponent },
+              { path: "transactions", component: TransactionsComponent },
               { path: "", component: WalletDetailsComponent },
             ],
           },
