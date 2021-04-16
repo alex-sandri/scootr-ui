@@ -75,6 +75,14 @@ export interface IWallet
   },
 }
 
+export interface IRideWaypoint
+{
+  id: string,
+  ride: IRide,
+  location: ILocation,
+  timestamp: string,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -158,6 +166,11 @@ export class ApiService
   public async retrieveRide(id: string): Promise<IApiServiceResponse<IRide>>
   {
     return this.send("GET", `rides/${id}`);
+  }
+
+  public async listWaypointsForRide(id: string): Promise<IApiServiceResponse<IRideWaypoint[]>>
+  {
+    return this.send("GET", `rides/${id}/waypoints`);
   }
 
   public async listRidesForUser(userId: string): Promise<IApiServiceResponse<IRide[]>>

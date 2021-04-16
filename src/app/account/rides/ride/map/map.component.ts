@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as L from "leaflet";
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService, IRideWaypoint } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-ride-map',
@@ -9,16 +10,27 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class RideMapComponent implements OnInit, AfterViewInit
 {
+  public waypoints?: IRideWaypoint[];
+
   private map?: L.Map;
 
   // Rome, IT
   public currentLocation: L.LatLngExpression = [ 41.9027835, 12.4963655 ];
 
-  constructor(private api: ApiService)
+  constructor(private api: ApiService, private route: ActivatedRoute)
   {}
 
   public ngOnInit()
-  {}
+  {
+    this.route.params.subscribe({
+      next: async params =>
+      {
+        const response = await this.api.listWaypointsForRide(params.id);
+
+        this.waypoints = response.data;
+      },
+    });
+  }
 
   public ngAfterViewInit()
   {
