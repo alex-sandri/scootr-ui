@@ -20,4 +20,21 @@
             </a>
         </div>
     </section>
+    <section>
+        <div class="title"></div>
+        <div class="content">
+            <a
+                routerLink="/settings/wallets/{{ wallet.id }}/subscriptions"
+                [class.selected]="section === 'subscriptions'"
+            >
+                Ricariche periodiche
+            </a>
+            <a
+                routerLink="/settings/wallets/{{ wallet.id }}/transactions"
+                [class.selected]="section === 'transactions'"
+            >
+                Storico transazioni
+            </a>
+        </div>
+    </section>
 </aside>
