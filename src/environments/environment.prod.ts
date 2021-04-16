@@ -1,13 +1,13 @@
 export const environment = {
   production: true,
   api: {
-    endpoint: "TODO",
+    endpoint: "https://api.scootr.it",
   },
   cie: {
     identityProviderId: "xx_servizicie",
   },
   spid: {
-    endpoint: "TODO",
+    endpoint: "https://spid.scootr.it",
     identityProviders: [
       {
         id: "arubaid",
