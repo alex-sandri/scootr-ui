@@ -73,7 +73,15 @@ export class AddFundsComponent implements OnInit
 
       if (result.error)
       {
-        console.log(result.error.message);
+        this.form.get("wallet")?.setErrors({
+          errors: [
+            {
+              error: result.error.message,
+            },
+          ],
+        });
+
+        this.isLoading = false;
 
         return;
       }
