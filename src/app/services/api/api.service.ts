@@ -40,11 +40,28 @@ export interface IRide
   amount: number | null,
 }
 
+export interface IRideWaypoint
+{
+  id: string,
+  ride: IRide,
+  location: ILocation,
+  timestamp: string,
+}
+
 export interface ISession
 {
   id: string,
   user: IUser,
   expires_at: string,
+}
+
+export interface ITransaction
+{
+  id: string,
+  amount: number,
+  wallet: IWallet,
+  timestamp: string,
+  reason: string,
 }
 
 export interface IUser
@@ -73,14 +90,6 @@ export interface IWallet
   __metadata?: {
     is_default: boolean,
   },
-}
-
-export interface IRideWaypoint
-{
-  id: string,
-  ride: IRide,
-  location: ILocation,
-  timestamp: string,
 }
 
 @Injectable({
@@ -208,6 +217,15 @@ export class ApiService
   public async deleteSession(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `sessions/${id}`);
+  }
+
+  /* ---------------
+  -- TRANSACTIONS --
+  --------------- */
+
+  public async listTransactionsForWallet(walletId: string): Promise<IApiServiceResponse<ITransaction[]>>
+  {
+    return this.send("GET", `wallets/${walletId}/transactions`);
   }
 
   /* --------

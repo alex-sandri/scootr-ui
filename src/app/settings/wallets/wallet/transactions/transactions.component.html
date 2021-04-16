@@ -1,1 +1,24 @@
-<p>transactions works!</p>
+<app-header></app-header>
+
+<wallet-menu section="transactions"></wallet-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Storico transazioni</h1>
+        </div>
+        <div class="content">
+            <div *ngIf="!transactions">
+                <spinner></spinner>
+            </div>
+            <div *ngIf="transactions" class="list">
+                <div *ngIf="transactions.length === 0">
+                    <p>Non hai ancora effettuato nessuna transazione</p>
+                </div>
+                <div *ngFor="let transaction of transactions">
+                    {{ transaction.id }}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
