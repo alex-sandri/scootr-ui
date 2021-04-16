@@ -7,8 +7,22 @@
         <div class="title">
             <h1>Dettagli</h1>
         </div>
-        <div class="content">
-            
+        <div *ngIf="ride" class="content details">
+            <div>
+                <h3>Iniziata</h3>
+                <span>{{ ride.start_time | date:"medium" }}</span>
+            </div>
+            <div *ngIf="!ride.end_time">
+                <i>In corso</i>
+            </div>
+            <div *ngIf="ride.end_time">
+                <h3>Conclusa</h3>
+                <span>{{ ride.end_time | date:"medium" }}</span>
+            </div>
+            <div *ngIf="ride.amount">
+                <h3>Costo</h3>
+                <span>{{ ride.amount | currency:"EUR" }}</span>
+            </div>
         </div>
     </section>
 </main>
