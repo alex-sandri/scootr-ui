@@ -20,12 +20,12 @@
                         Iniziata
                         <span>{{ ride.start_time | date:"medium" }}</span>
                     </p>
-                    <p>
+                    <p *ngIf="!ride.end_time">
+                        <i>In corso</i>
+                    </p>
+                    <p *ngIf="ride.end_time">
                         Conclusa
                         <span>{{ ride.end_time | date:"medium" }}</span>
-                    </p>
-                    <p *ngIf="!ride.amount">
-                        <i>In corso</i>
                     </p>
                     <p *ngIf="ride.amount">
                         Costo
