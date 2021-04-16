@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { differenceInMinutes, differenceInSeconds } from 'date-fns';
+import { differenceInSeconds } from 'date-fns';
 import * as L from "leaflet";
 import "leaflet.markercluster";
 import { interval } from 'rxjs';
