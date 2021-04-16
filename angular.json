@@ -137,6 +137,10 @@
               "devServerTarget": "scootr-ui:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
