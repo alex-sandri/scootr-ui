@@ -31,6 +31,7 @@ import { RidesComponent } from './account/rides/rides.component';
 import { AccountMenuComponent } from './account/menu/menu.component';
 import { RideMenuComponent } from './account/rides/ride/menu/menu.component';
 import { RideDetailsComponent } from './account/rides/ride/details/details.component';
+import { RideMapComponent } from './account/rides/ride/map/map.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -60,6 +61,7 @@ registerLocaleData(localeIt, "it");
     AccountMenuComponent,
     RideMenuComponent,
     RideDetailsComponent,
+    RideMapComponent,
   ],
   imports: [
     BrowserModule,
