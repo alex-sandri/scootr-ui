@@ -55,6 +55,17 @@ export interface ISession
   expires_at: string,
 }
 
+export interface ISubscription
+{
+  id: string,
+  amount: number,
+  wallet: IWallet,
+  status: string,
+  current_period_end: string,
+  cancel_at_period_end: boolean,
+  deleted: boolean,
+}
+
 export interface ITransaction
 {
   id: string,
@@ -219,6 +230,15 @@ export class ApiService
     return this.send("DELETE", `sessions/${id}`);
   }
 
+  /* ----------------
+  -- SUBSCRIPTIONS --
+  ---------------- */
+
+  public async listSubscriptionsForWallet(walletId: string): Promise<IApiServiceResponse<ISubscription[]>>
+  {
+    return this.send("GET", `wallet/${walletId}/subscriptions`);
+  }
+
   /* ---------------
   -- TRANSACTIONS --
   --------------- */
@@ -235,6 +255,11 @@ export class ApiService
   public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>>
   {
     return this.send("GET", `users/${id}`);
+  }
+
+  public async createBillingPortalSession(userId: string): Promise<IApiServiceResponse<{ url: string }>>
+  {
+    return this.send("GET", `users/${userId}/stripe/billing-portal`);
   }
 
   public async createUser(data: {

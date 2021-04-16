@@ -1,1 +1,30 @@
-<p>subscriptions works!</p>
+<app-header></app-header>
+
+<wallet-menu section="subscriptions"></wallet-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Ricariche periodiche</h1>
+            <button (click)="manageSubscriptions()">Gestisci</button>
+        </div>
+        <div class="content">
+            <div *ngIf="!subscriptions">
+                <spinner></spinner>
+            </div>
+            <!--
+            <div *ngIf="subscriptions">
+                <subscription-list [subscriptions]="subscriptions.active"></subscription-list>
+                <div *ngIf="subscriptions.incomplete.length > 0">
+                    <h2>{{ "settings.account.subscriptions.inactive" | translate }}</h2>
+                    <subscription-list [subscriptions]="subscriptions.incomplete"></subscription-list>
+                </div>
+                <div *ngIf="subscriptions.old.length > 0">
+                    <h2>{{ "settings.account.subscriptions.old" | translate }}</h2>
+                    <subscription-list [subscriptions]="subscriptions.old"></subscription-list>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+</main>
