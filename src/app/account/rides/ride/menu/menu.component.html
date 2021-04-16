@@ -1,1 +1,13 @@
-<p>menu works!</p>
+<aside>
+    <section>
+        <div class="title"></div>
+        <div class="content">
+            <a
+                routerLink="/account/rides/{{ rideId }}/details"
+                [class.selected]="section === 'details'"
+            >
+                Dettagli
+            </a>
+        </div>
+    </section>
+</aside>
