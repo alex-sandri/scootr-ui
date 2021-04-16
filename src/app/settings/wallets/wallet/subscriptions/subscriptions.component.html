@@ -12,19 +12,17 @@
             <div *ngIf="!subscriptions">
                 <spinner></spinner>
             </div>
-            <!--
             <div *ngIf="subscriptions">
                 <subscription-list [subscriptions]="subscriptions.active"></subscription-list>
                 <div *ngIf="subscriptions.incomplete.length > 0">
-                    <h2>{{ "settings.account.subscriptions.inactive" | translate }}</h2>
+                    <h2>Inattive</h2>
                     <subscription-list [subscriptions]="subscriptions.incomplete"></subscription-list>
                 </div>
                 <div *ngIf="subscriptions.old.length > 0">
-                    <h2>{{ "settings.account.subscriptions.old" | translate }}</h2>
+                    <h2>Vecchie</h2>
                     <subscription-list [subscriptions]="subscriptions.old"></subscription-list>
                 </div>
             </div>
-            -->
         </div>
     </section>
 </main>

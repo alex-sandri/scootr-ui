@@ -1,0 +1,19 @@
+<div *ngIf="subscriptions" class="list">
+    <div *ngIf="subscriptions.length === 0">
+        <p>Non hai ancora impostato nessuna ricarica periodica</p>
+    </div>
+    <div *ngFor="let subscription of subscriptions" class="bundle">
+        <p class="price">
+            {{ subscription.amount | currency:"EUR"}}
+            <span class="billing-period">/ mese</span>
+        </p>
+        <small *ngIf="subscription.status === 'active'">
+            {{
+                subscription.cancel_at_period_end
+                    ? "Si cancella il"
+                    : "Si rinnova il"
+            }}
+            <b>{{ subscription.current_period_end | date }}</b>
+        </small>
+    </div>
+</div>
