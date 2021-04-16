@@ -29,6 +29,8 @@ import { AdvancedComponent } from './settings/advanced/advanced.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { RidesComponent } from './account/rides/rides.component';
 import { AccountMenuComponent } from './account/menu/menu.component';
+import { RideMenuComponent } from './account/rides/ride/menu/menu.component';
+import { RideDetailsComponent } from './account/rides/ride/details/details.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -56,6 +58,8 @@ registerLocaleData(localeIt, "it");
     DialogComponent,
     RidesComponent,
     AccountMenuComponent,
+    RideMenuComponent,
+    RideDetailsComponent,
   ],
   imports: [
     BrowserModule,

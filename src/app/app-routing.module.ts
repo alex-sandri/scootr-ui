@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RideDetailsComponent } from './account/rides/ride/details/details.component';
 import { RidesComponent } from './account/rides/rides.component';
 import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { HomeComponent } from './home/home.component';
@@ -24,9 +25,8 @@ const routes: Routes = [
           {
             path: ":id",
             children: [
-              // TODO
-              { path: "details", component: RidesComponent },
-              { path: "", component: RidesComponent },
+              { path: "details", component: RideDetailsComponent },
+              { path: "", component: RideDetailsComponent },
             ],
           },
           { path: "", component: RidesComponent },
