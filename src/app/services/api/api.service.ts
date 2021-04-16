@@ -257,11 +257,6 @@ export class ApiService
     return this.send("GET", `users/${id}`);
   }
 
-  public async createBillingPortalSession(userId: string): Promise<IApiServiceResponse<{ url: string }>>
-  {
-    return this.send("GET", `users/${userId}/stripe/billing-portal`);
-  }
-
   public async createUser(data: {
     first_name: string,
     last_name: string,
@@ -312,6 +307,11 @@ export class ApiService
   public async retrieveWallet(walletId: string): Promise<IApiServiceResponse<IWallet>>
   {
     return this.send("GET", `wallets/${walletId}`);
+  }
+
+  public async createBillingPortalSession(walletId: string): Promise<IApiServiceResponse<{ url: string }>>
+  {
+    return this.send("GET", `wallets/${walletId}/stripe/billing-portal`);
   }
 
   public async createWalletForUser(data: {
