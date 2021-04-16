@@ -236,7 +236,7 @@ export class ApiService
 
   public async listSubscriptionsForWallet(walletId: string): Promise<IApiServiceResponse<ISubscription[]>>
   {
-    return this.send("GET", `wallet/${walletId}/subscriptions`);
+    return this.send("GET", `wallets/${walletId}/subscriptions`);
   }
 
   /* ---------------
