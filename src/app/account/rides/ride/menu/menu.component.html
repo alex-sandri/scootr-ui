@@ -8,6 +8,12 @@
             >
                 Dettagli
             </a>
+            <a
+                routerLink="/account/rides/{{ rideId }}/map"
+                [class.selected]="section === 'map'"
+            >
+                Mappa
+            </a>
         </div>
     </section>
 </aside>
