@@ -1,1 +1,21 @@
 @import "../../../settings";
+
+.list
+{
+    p
+    {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .mat-icon
+        {
+            font-size: 1.2rem;
+        }
+
+        .negative
+        {
+            color: red;
+        }
+    }
+}

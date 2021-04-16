@@ -16,7 +16,23 @@
                     <p>Non hai ancora effettuato nessuna transazione</p>
                 </div>
                 <div *ngFor="let transaction of transactions">
-                    {{ transaction.id }}
+                    <p>
+                        <span class="mat-icon">schedule</span>
+                        {{ transaction.timestamp | date:"medium" }}
+                    </p>
+                    <p>
+                        <span class="mat-icon">paid</span>
+                        <span [class.negative]="transaction.amount < 0">
+                            {{ transaction.amount | currency:"EUR" }}
+                        </span>
+                    </p>
+                    <p>
+                        <span class="mat-icon">help_outline</span>
+                        <span [ngSwitch]="transaction.reason">
+                            <span *ngSwitchCase="'credit'">Accredito</span>
+                            <span *ngSwitchCase="'ride'">Corsa</span>
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>
