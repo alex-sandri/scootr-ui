@@ -7,6 +7,9 @@
         <div class="title">
             <h1>Dettagli</h1>
         </div>
+        <div *ngIf="!ride" class="content">
+            <spinner></spinner>
+        </div>
         <div *ngIf="ride" class="content details">
             <div>
                 <h3>Iniziata</h3>
