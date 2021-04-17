@@ -30,7 +30,12 @@
                         <span class="mat-icon">help_outline</span>
                         <span [ngSwitch]="transaction.reason">
                             <span *ngSwitchCase="'credit'">Accredito</span>
-                            <span *ngSwitchCase="'ride'">Corsa</span>
+                            <span *ngSwitchCase="'ride'">
+                                <a routerLink="/account/rides/{{ transaction.external_id }}" class="dark">
+                                    Corsa
+                                    <span class="mat-icon">open_in_new</span>
+                                </a>
+                            </span>
                             <span *ngSwitchCase="'subscription'">Ricarica periodica</span>
                         </span>
                     </p>

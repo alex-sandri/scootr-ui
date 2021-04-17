@@ -73,6 +73,7 @@ export interface ITransaction
   wallet: IWallet,
   timestamp: string,
   reason: string,
+  external_id: string,
 }
 
 export interface IUser

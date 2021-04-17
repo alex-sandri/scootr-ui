@@ -8,7 +8,7 @@
         align-items: center;
         gap: 1rem;
 
-        .mat-icon
+        > .mat-icon
         {
             font-size: 1.2rem;
         }
@@ -16,6 +16,13 @@
         .negative
         {
             color: red;
+        }
+
+        a
+        {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
     }
 }
