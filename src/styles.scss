@@ -461,4 +461,7 @@ div.list
 hr
 {
     margin: 1rem 0;
+    border-style: solid;
+    border-radius: 1px;
+    background-color: currentColor;
 }
