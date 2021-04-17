@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IDialogButton } from 'src/app/components/dialog/dialog.component';
 import { ApiService, IPaymentMethod } from 'src/app/services/api/api.service';
 
 @Component({
@@ -12,6 +13,10 @@ export class PaymentMethodsComponent implements OnInit
   private walletId?: string;
 
   public paymentMethods?: IPaymentMethod[];
+
+  public showDialog = false;
+  public dialogMessage = "";
+  public dialogButtons: IDialogButton[] = [];
 
   constructor(private api: ApiService, private route: ActivatedRoute)
   {}
@@ -64,9 +69,24 @@ export class PaymentMethodsComponent implements OnInit
 
     const response = await this.api.deletePaymentMethod(paymentMethod.id);
 
-    if (response.success)
+    if (response.errors)
     {
-      this.paymentMethods = this.paymentMethods.filter(p => p.id !== paymentMethod.id);
+      if (response.errors)
+      {
+        this.showDialog = true;
+        this.dialogMessage = response.errors[0].error;
+        this.dialogButtons = [
+          {
+            text: "OK",
+            classes: [ "dark" ],
+            onClick: () => this.showDialog = false,
+          },
+        ];
+
+        return;
+      }
     }
+
+    this.paymentMethods = this.paymentMethods.filter(p => p.id !== paymentMethod.id);
   }
 }
