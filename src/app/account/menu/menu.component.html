@@ -3,10 +3,35 @@
         <div class="title"></div>
         <div class="content">
             <a
+                routerLink="/account/details"
+                [class.selected]="section === 'details'"
+            >
+                Dettagli
+            </a>
+            <a
+                routerLink="/account/wallets"
+                [class.selected]="section === 'wallets'"
+            >
+                Portafogli
+            </a>
+            <a
                 routerLink="/account/rides"
                 [class.selected]="section === 'rides'"
             >
                 Corse
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="title">
+            <h1>Impostazioni</h1>
+        </div>
+        <div class="content">
+            <a
+                routerLink="/account/settings/advanced"
+                [class.selected]="section === 'settings/advanced'"
+            >
+                Avanzate
             </a>
         </div>
     </section>

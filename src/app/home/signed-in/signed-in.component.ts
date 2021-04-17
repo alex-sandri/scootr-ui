@@ -77,6 +77,8 @@ export class SignedInHomeComponent implements AfterViewInit
             iconUrl: "/assets/marker-icon.png",
             shadowUrl: "/assets/marker-shadow.png",
             iconRetinaUrl: "/assets/marker-icon-2x.png",
+            iconSize: [ 25, 41 ],
+            iconAnchor: [ 12.5, 41 ],
           }),
         }
       )
@@ -139,7 +141,7 @@ export class SignedInHomeComponent implements AfterViewInit
         zoomControl: false,
       })
       .on("viewreset", () => this.loadVehicles())
-      .on("dragend", () => this.loadVehicles())
+      .on("moveend", () => this.loadVehicles())
       .on("zoomend", () => this.loadVehicles());
 
     L
@@ -171,17 +173,12 @@ export class SignedInHomeComponent implements AfterViewInit
 
     const center = this.map.getCenter();
 
-    const eastBound = this.map.getBounds().getEast();
-    const centerEast = L.latLng(center.lat, eastBound);
-
-    const radius = center.distanceTo(centerEast) * 2;
-
     const response = await this.api.listVehiclesNearLocation(
       {
         latitude: center.lat,
         longitude: center.lng,
       },
-      radius,
+      center.distanceTo(this.map.getBounds().getNorthEast()),
     );
 
     if (response.data)

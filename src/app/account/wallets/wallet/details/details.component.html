@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<wallet-menu section="details"></wallet-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Dettagli</h1>
+        </div>
+        <div class="content">
+            <spinner *ngIf="!wallet"></spinner>
+            <form *ngIf="wallet" [formGroup]="form" (submit)="onSubmit($event)">
+                <label>
+                    Nome
+                    <input
+                        formControlName="name"
+
+                        type="text"
+                        name="name"
+                        required
+                    >
+                    <div class="errors">
+                        <p *ngFor="let error of form.get('name')?.errors?.errors">
+                            {{ error.error }}
+                        </p>
+                    </div>
+                </label>
+                <button type="submit">
+                    Aggiorna
+                </button>
+            </form>
+        </div>
+    </section>
+    <section>
+        <div class="title">
+            <h1>Saldo</h1>
+            <a *ngIf="wallet" routerLink="/account/wallets/{{ wallet.id }}/add-funds" class="button">
+                Ricarica
+            </a>
+        </div>
+        <div class="content">
+            <spinner *ngIf="!wallet"></spinner>
+            <span *ngIf="wallet" class="balance">
+                <b>{{ wallet.balance }}</b>
+                &euro;
+            </span>
+        </div>
+    </section>
+</main>

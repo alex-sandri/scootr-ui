@@ -1,0 +1,40 @@
+<aside *ngIf="wallet">
+    <header>
+        <small>Portafoglio</small>
+        <h1>{{ wallet.name }}</h1>
+    </header>
+    <section>
+        <div class="title"></div>
+        <div class="content">
+            <a
+                routerLink="/account/wallets/{{ wallet.id }}/details"
+                [class.selected]="section === 'details'"
+            >
+                Dettagli
+            </a>
+            <a
+                routerLink="/account/wallets/{{ wallet.id }}/payment-methods"
+                [class.selected]="section === 'payment-methods'"
+            >
+                Metodi di pagamento
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="title"></div>
+        <div class="content">
+            <a
+                routerLink="/account/wallets/{{ wallet.id }}/subscriptions"
+                [class.selected]="section === 'subscriptions'"
+            >
+                Ricariche periodiche
+            </a>
+            <a
+                routerLink="/account/wallets/{{ wallet.id }}/transactions"
+                [class.selected]="section === 'transactions'"
+            >
+                Storico transazioni
+            </a>
+        </div>
+    </section>
+</aside>
