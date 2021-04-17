@@ -3,13 +3,13 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-advanced',
-  templateUrl: './advanced.component.html',
-  styleUrls: ['./advanced.component.scss']
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss']
 })
-export class AdvancedComponent
+export class DetailsComponent
 {
-  constructor(private api: ApiService, private auth: AuthService)
+  constructor(private api: ApiService, public auth: AuthService)
   {}
 
   public async deleteAccount()
