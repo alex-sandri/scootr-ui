@@ -77,6 +77,8 @@ export class SignedInHomeComponent implements AfterViewInit
             iconUrl: "/assets/marker-icon.png",
             shadowUrl: "/assets/marker-shadow.png",
             iconRetinaUrl: "/assets/marker-icon-2x.png",
+            iconSize: [ 25, 41 ],
+            iconAnchor: [ 12.5, 41 ],
           }),
         }
       )
