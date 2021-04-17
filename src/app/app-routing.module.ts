@@ -15,6 +15,7 @@ import { PaymentMethodsComponent } from './account/wallets/wallet/payment-method
 import { SubscriptionsComponent } from './account/wallets/wallet/subscriptions/subscriptions.component';
 import { TransactionsComponent } from './account/wallets/wallet/transactions/transactions.component';
 import { WalletsComponent } from './account/wallets/wallets.component';
+import { AdvancedSettingsComponent } from './account/settings/advanced/advanced.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,13 @@ const routes: Routes = [
               { path: "", component: RideDetailsComponent },
             ],
           },
+          { path: "", component: RidesComponent },
+        ],
+      },
+      {
+        path: "settings",
+        children: [
+          { path: "advanced", component: AdvancedSettingsComponent },
           { path: "", component: RidesComponent },
         ],
       },

@@ -33,6 +33,7 @@ import { RideMapComponent } from './account/rides/ride/map/map.component';
 import { TransactionsComponent } from './account/wallets/wallet/transactions/transactions.component';
 import { SubscriptionsComponent } from './account/wallets/wallet/subscriptions/subscriptions.component';
 import { SubscriptionListComponent } from './account/wallets/wallet/subscriptions/list/list.component';
+import { AdvancedSettingsComponent } from './account/settings/advanced/advanced.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -64,6 +65,7 @@ registerLocaleData(localeIt, "it");
     TransactionsComponent,
     SubscriptionsComponent,
     SubscriptionListComponent,
+    AdvancedSettingsComponent,
   ],
   imports: [
     BrowserModule,
