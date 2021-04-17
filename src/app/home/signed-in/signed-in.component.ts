@@ -176,7 +176,7 @@ export class SignedInHomeComponent implements AfterViewInit
     const eastBound = this.map.getBounds().getEast();
     const centerEast = L.latLng(center.lat, eastBound);
 
-    const radius = center.distanceTo(centerEast) * 2;
+    const radius = center.distanceTo(centerEast);
 
     const response = await this.api.listVehiclesNearLocation(
       {
