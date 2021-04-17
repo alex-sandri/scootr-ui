@@ -156,7 +156,7 @@ export class SignedInHomeComponent implements AfterViewInit
     L
       .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
-        minZoom: 12,
+        minZoom: 15,
         attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
       })
       .addTo(this.map);
