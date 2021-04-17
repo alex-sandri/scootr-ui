@@ -16,6 +16,7 @@ import { SubscriptionsComponent } from './account/wallets/wallet/subscriptions/s
 import { TransactionsComponent } from './account/wallets/wallet/transactions/transactions.component';
 import { WalletsComponent } from './account/wallets/wallets.component';
 import { AdvancedSettingsComponent } from './account/settings/advanced/advanced.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,7 @@ const routes: Routes = [
   },
   { path: "scan", component: ScanComponent, canActivate: [ SignedInGuard ] },
   { path: "", component: HomeComponent },
+  { path: "**", component: PageNotFoundComponent },
 ];
 
 @NgModule({

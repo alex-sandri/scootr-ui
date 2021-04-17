@@ -34,6 +34,7 @@ import { TransactionsComponent } from './account/wallets/wallet/transactions/tra
 import { SubscriptionsComponent } from './account/wallets/wallet/subscriptions/subscriptions.component';
 import { SubscriptionListComponent } from './account/wallets/wallet/subscriptions/list/list.component';
 import { AdvancedSettingsComponent } from './account/settings/advanced/advanced.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 registerLocaleData(localeIt, "it");
 
@@ -66,6 +67,7 @@ registerLocaleData(localeIt, "it");
     SubscriptionsComponent,
     SubscriptionListComponent,
     AdvancedSettingsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
