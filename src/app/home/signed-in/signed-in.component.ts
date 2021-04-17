@@ -173,17 +173,12 @@ export class SignedInHomeComponent implements AfterViewInit
 
     const center = this.map.getCenter();
 
-    const eastBound = this.map.getBounds().getEast();
-    const centerEast = L.latLng(center.lat, eastBound);
-
-    const radius = center.distanceTo(centerEast);
-
     const response = await this.api.listVehiclesNearLocation(
       {
         latitude: center.lat,
         longitude: center.lng,
       },
-      radius,
+      center.distanceTo(this.map.getBounds().getNorthEast()),
     );
 
     if (response.data)
