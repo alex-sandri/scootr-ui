@@ -3,6 +3,18 @@
         <div class="title"></div>
         <div class="content">
             <a
+                routerLink="/account/details"
+                [class.selected]="section === 'details'"
+            >
+                Dettagli
+            </a>
+            <a
+                routerLink="/account/wallets"
+                [class.selected]="section === 'wallets'"
+            >
+                Portafogli
+            </a>
+            <a
                 routerLink="/account/rides"
                 [class.selected]="section === 'rides'"
             >
