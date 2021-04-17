@@ -8,7 +8,8 @@
             <h1>Dettagli</h1>
         </div>
         <div class="content">
-            <form [formGroup]="form" (submit)="onSubmit($event)">
+            <spinner *ngIf="!wallet"></spinner>
+            <form *ngIf="wallet" [formGroup]="form" (submit)="onSubmit($event)">
                 <label>
                     Nome
                     <input
@@ -30,15 +31,16 @@
             </form>
         </div>
     </section>
-    <section *ngIf="wallet">
+    <section>
         <div class="title">
             <h1>Saldo</h1>
-            <a routerLink="/settings/wallets/{{ wallet.id }}/add-funds" class="button">
+            <a *ngIf="wallet" routerLink="/settings/wallets/{{ wallet.id }}/add-funds" class="button">
                 Ricarica
             </a>
         </div>
         <div class="content">
-            <span class="balance">
+            <spinner *ngIf="!wallet"></spinner>
+            <span *ngIf="wallet" class="balance">
                 <b>{{ wallet.balance }}</b>
                 &euro;
             </span>
