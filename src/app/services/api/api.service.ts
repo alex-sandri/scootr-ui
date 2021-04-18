@@ -18,6 +18,16 @@ interface ILocation
   longitude: number,
 }
 
+export interface IExport
+{
+  id: string,
+  user: IUser,
+  data: any,
+  created_at: string,
+  completed_at: string | null,
+  expires_at: string | null,
+}
+
 export interface IPaymentMethod
 {
   id: string,
@@ -150,6 +160,20 @@ export class ApiService
     }
 
     return result;
+  }
+
+  /* ----------
+  -- EXPORTS --
+  ---------- */
+
+  public async retrieveExport(id: string): Promise<IApiServiceResponse<IExport>>
+  {
+    return this.send("GET", `exports/${id}`);
+  }
+
+  public async createExport(userId: string): Promise<IApiServiceResponse<IExport>>
+  {
+    return this.send("POST", `users/${userId}/exports`);
   }
 
   /* ------------------
