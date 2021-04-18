@@ -79,13 +79,17 @@ export class AddPaymentMethodComponent
 
     const response = await this.api.addPaymentMethodToWallet(result.paymentMethod.id, this.walletId);
 
-    if (response.success)
+    if (response.errors)
     {
-      this.router.navigate([ ".." ], {
-        relativeTo: this.route,
-      });
+      this.cardElementError = response.errors[0].error;
+
+      this.isLoading = false;
+
+      return;
     }
 
-    this.isLoading = false;
+    this.router.navigate([ ".." ], {
+      relativeTo: this.route,
+    });
   }
 }
