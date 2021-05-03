@@ -40,10 +40,7 @@
         </div>
         <div class="content">
             <spinner *ngIf="!wallet"></spinner>
-            <span *ngIf="wallet" class="balance">
-                <b>{{ wallet.balance }}</b>
-                &euro;
-            </span>
+            <b *ngIf="wallet" class="balance">{{ wallet.balance | currency:"EUR" }}</b>
         </div>
     </section>
 </main>
