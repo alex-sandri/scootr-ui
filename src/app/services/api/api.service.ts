@@ -42,7 +42,6 @@ export interface IPaymentMethod
 export interface IRide
 {
   id: string,
-  user: IUser,
   vehicle: IVehicle,
   wallet: IWallet,
   start_time: string,
