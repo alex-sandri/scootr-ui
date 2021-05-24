@@ -29,7 +29,7 @@
                     <p>
                         <span class="mat-icon">help_outline</span>
                         <span [ngSwitch]="transaction.reason">
-                            <span *ngSwitchCase="'top-up'">Accredito</span>
+                            <span *ngSwitchCase="'restore-balance'">Ripristinato saldo precedente</span>
                             <span *ngSwitchCase="'ride'">
                                 <a routerLink="/account/rides/{{ transaction.external_id }}" class="dark">
                                     Corsa
@@ -37,6 +37,7 @@
                                 </a>
                             </span>
                             <span *ngSwitchCase="'subscription'">Ricarica periodica</span>
+                            <span *ngSwitchCase="'top-up'">Accredito</span>
                         </span>
                     </p>
                 </div>
